@@ -60,7 +60,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" onClick={close} className="flex items-center gap-3 shrink-0">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Blue Bay Mobility"
                 width={52}
                 height={52}

@@ -59,7 +59,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-5">
-              <Image src="/logo.svg" alt="Blue Bay Mobility" width={48} height={48} className="object-contain" />
+              <Image src="/logo.png" alt="Blue Bay Mobility" width={48} height={48} className="object-contain" />
               <div>
                 <div className="font-bold text-white text-lg leading-tight">Blue Bay Mobility</div>
                 <div className="text-xs text-blue-300 font-semibold tracking-widest uppercase">CRT Provider</div>
