@@ -1,42 +1,171 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="500" height="600">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#1E90FF"/>
-      <stop offset="100%" stop-color="#0A2463"/>
-    </radialGradient>
-    <clipPath id="circle">
-      <circle cx="60" cy="60" r="55"/>
+    <clipPath id="circ">
+      <circle cx="250" cy="225" r="198"/>
     </clipPath>
+
+    <!-- Sky gradient: light top-right, warm near sun -->
+    <linearGradient id="skyGrad" x1="30%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%"   stop-color="#C8E8F8"/>
+      <stop offset="50%"  stop-color="#87CEEB"/>
+      <stop offset="100%" stop-color="#F5D87A"/>
+    </linearGradient>
+
+    <!-- Sun gradient -->
+    <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#FFF176"/>
+      <stop offset="35%"  stop-color="#FFD740"/>
+      <stop offset="65%"  stop-color="#FFA000"/>
+      <stop offset="100%" stop-color="#E65100"/>
+    </radialGradient>
+
+    <!-- Main dark navy wave -->
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%"   stop-color="#0A1E5E"/>
+      <stop offset="55%"  stop-color="#0D2B7A"/>
+      <stop offset="100%" stop-color="#1040A0"/>
+    </linearGradient>
+
+    <!-- Blue water/river -->
+    <linearGradient id="riverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#42A5F5"/>
+    </linearGradient>
+
+    <!-- Hill gradients -->
+    <linearGradient id="hillBack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#388E3C"/>
+      <stop offset="100%" stop-color="#1B5E20"/>
+    </linearGradient>
+    <linearGradient id="hillFrontL" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#5BBF5B"/>
+      <stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+    <linearGradient id="hillFrontR" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#66BB6A"/>
+      <stop offset="100%" stop-color="#388E3C"/>
+    </linearGradient>
+
+    <!-- "BlueBay" script gradient -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#0A2060"/>
+      <stop offset="45%"  stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#1E88E5"/>
+    </linearGradient>
   </defs>
 
-  <!-- Outer ring -->
-  <circle cx="60" cy="60" r="58" fill="#0A2463"/>
-  <circle cx="60" cy="60" r="55" fill="url(#bg)"/>
+  <!-- ── CIRCLE SCENE ── -->
 
-  <!-- Sky -->
-  <rect x="5" y="5" width="110" height="55" fill="#87CEEB" clip-path="url(#circle)"/>
+  <!-- Sky background -->
+  <rect x="52" y="27" width="396" height="396" fill="url(#skyGrad)" clip-path="url(#circ)"/>
 
-  <!-- Sun -->
-  <circle cx="88" cy="30" r="12" fill="#FFD700"/>
-  <circle cx="88" cy="30" r="9" fill="#FFA500"/>
+  <!-- Sun (upper right, partially clipped) -->
+  <circle cx="368" cy="160" r="48" fill="url(#sunGrad)" clip-path="url(#circ)"/>
+  <circle cx="368" cy="160" r="32" fill="#FFD740" clip-path="url(#circ)"/>
 
-  <!-- Hills -->
-  <ellipse cx="30" cy="75" rx="40" ry="25" fill="#2E8B57" clip-path="url(#circle)"/>
-  <ellipse cx="85" cy="80" rx="38" ry="20" fill="#3CB371" clip-path="url(#circle)"/>
+  <!-- ── MAIN DARK NAVY WAVE / BAY SHAPE ──
+       Sweeps in from top-left, forms a large S-curve swoosh,
+       leaving sky/hills visible on the right -->
+  <path d="
+    M 52 27
+    C 120 20, 195 55, 235 115
+    C 265 160, 270 200, 255 248
+    C 240 295, 200 335, 160 368
+    C 120 400, 75 415, 52 418
+    Z
+  " fill="url(#waveGrad)" clip-path="url(#circ)"/>
 
-  <!-- Water / Bay -->
-  <ellipse cx="60" cy="90" rx="55" ry="22" fill="#1E90FF" clip-path="url(#circle)"/>
-  <ellipse cx="60" cy="90" rx="55" ry="18" fill="#4169E1" opacity="0.7" clip-path="url(#circle)"/>
+  <!-- Upper swoosh lobe of wave (the part that curves right at top) -->
+  <path d="
+    M 52 27
+    C 110 18, 210 40, 275 95
+    C 315 128, 335 165, 318 198
+    C 305 222, 278 228, 255 218
+    C 228 206, 205 178, 185 150
+    C 160 115, 125 70, 90 45
+    C 76 35, 62 28, 52 27
+    Z
+  " fill="url(#waveGrad)" clip-path="url(#circ)"/>
 
-  <!-- Winding path/road -->
-  <path d="M 45 115 Q 50 90 60 75 Q 70 60 65 40" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.9" clip-path="url(#circle)"/>
-  <path d="M 45 115 Q 50 90 60 75 Q 70 60 65 40" stroke="#F0F8FF" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6" clip-path="url(#circle)"/>
+  <!-- White foam / highlight on top edge of wave -->
+  <path d="
+    M 90 48
+    C 140 35, 225 55, 285 105
+    C 310 127, 332 158, 322 190
+    C 314 170, 295 140, 268 115
+    C 215 70, 148 48, 90 48
+    Z
+  " fill="white" opacity="0.75" clip-path="url(#circ)"/>
 
-  <!-- Wave overlays on water -->
-  <path d="M 10 88 Q 30 82 50 88 Q 70 94 90 88 Q 100 84 115 88" stroke="white" stroke-width="1.5" fill="none" opacity="0.4" clip-path="url(#circle)"/>
-  <path d="M 10 96 Q 35 90 55 96 Q 75 102 95 96 Q 108 92 115 96" stroke="white" stroke-width="1.5" fill="none" opacity="0.3" clip-path="url(#circle)"/>
+  <!-- Soft white line accent on outer edge of wave (inner ring highlight) -->
+  <path d="M 80 52 C 135 30, 230 52, 295 108"
+    stroke="white" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.6" clip-path="url(#circ)"/>
 
-  <!-- Outer ring accent -->
-  <circle cx="60" cy="60" r="56" fill="none" stroke="white" stroke-width="1.5" opacity="0.3"/>
-  <circle cx="60" cy="60" r="58" fill="none" stroke="#0A2463" stroke-width="4"/>
+  <!-- ── GREEN HILLS (lower portion) ── -->
+  <!-- Back hills -->
+  <ellipse cx="310" cy="358" rx="200" ry="90" fill="url(#hillBack)"   clip-path="url(#circ)"/>
+  <!-- Front left hill -->
+  <ellipse cx="155" cy="385" rx="160" ry="80" fill="url(#hillFrontL)" clip-path="url(#circ)"/>
+  <!-- Front right hill -->
+  <ellipse cx="365" cy="375" rx="155" ry="78" fill="url(#hillFrontR)" clip-path="url(#circ)"/>
+  <!-- Valley fill to hide seam -->
+  <ellipse cx="255" cy="395" rx="90"  ry="45" fill="#43A047" clip-path="url(#circ)"/>
+
+  <!-- ── BLUE RIVER / WATER (right side between hills) ── -->
+  <path d="
+    M 310 422
+    C 305 390, 315 358, 330 325
+    C 348 287, 375 262, 390 232
+  " stroke="url(#riverGrad)" stroke-width="32" fill="none" stroke-linecap="round" clip-path="url(#circ)"/>
+
+  <!-- ── WINDING WHITE ROAD ──
+       Starts wide at bottom-centre, S-curves into distance (upper right) -->
+  <!-- Road shadow/outline -->
+  <path d="
+    M 220 422
+    C 228 392, 240 360, 252 330
+    C 265 298, 280 272, 292 248
+    C 305 222, 316 200, 322 175
+    C 328 150, 332 132, 335 112
+  " stroke="#D0D0D0" stroke-width="30" fill="none" stroke-linecap="round" clip-path="url(#circ)"/>
+  <!-- Road white surface -->
+  <path d="
+    M 220 422
+    C 228 392, 240 360, 252 330
+    C 265 298, 280 272, 292 248
+    C 305 222, 316 200, 322 175
+    C 328 150, 332 132, 335 112
+  " stroke="white" stroke-width="22" fill="none" stroke-linecap="round" clip-path="url(#circ)"/>
+
+  <!-- ── CIRCLE RINGS ── -->
+  <!-- Dark navy outer ring -->
+  <circle cx="250" cy="225" r="210" fill="none" stroke="#0A1E5E" stroke-width="18"/>
+  <!-- White inner ring -->
+  <circle cx="250" cy="225" r="200" fill="none" stroke="white" stroke-width="5" opacity="0.85"/>
+  <!-- Thin navy inner accent -->
+  <circle cx="250" cy="225" r="196" fill="none" stroke="#0A1E5E" stroke-width="2" opacity="0.4"/>
+
+  <!-- ── TEXT BELOW CIRCLE ── -->
+
+  <!-- "BlueBay" italic script -->
+  <text x="250" y="498"
+    font-family="'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif"
+    font-size="90"
+    font-weight="bold"
+    font-style="italic"
+    text-anchor="middle"
+    fill="url(#textGrad)">BlueBay</text>
+
+  <!-- Flanking lines for MOBILITY -->
+  <line x1="72"  y1="525" x2="142" y2="525" stroke="#888" stroke-width="1.5"/>
+  <line x1="358" y1="525" x2="428" y2="525" stroke="#888" stroke-width="1.5"/>
+
+  <!-- "MOBILITY" spaced caps -->
+  <text x="250" y="540"
+    font-family="'Arial', 'Helvetica Neue', Helvetica, sans-serif"
+    font-size="22"
+    font-weight="600"
+    letter-spacing="10"
+    text-anchor="middle"
+    fill="#777777">MOBILITY</text>
 </svg>
