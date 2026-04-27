@@ -55,15 +55,15 @@ export default function Header() {
         scrolled && "shadow-md"
       )}>
         <div className="container">
-          <div className="flex items-center justify-between h-[160px]">
+          <div className="flex items-center justify-between h-[116px]">
 
             {/* Logo */}
             <Link href="/" onClick={close} className="flex items-center shrink-0">
               <Image
                 src="/logo.png"
                 alt="Blue Bay Mobility"
-                width={144}
-                height={144}
+                width={100}
+                height={100}
                 className="object-contain"
                 priority
               />
