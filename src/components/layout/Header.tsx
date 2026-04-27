@@ -55,7 +55,7 @@ export default function Header() {
         scrolled && "shadow-md"
       )}>
         <div className="container">
-          <div className="flex items-center justify-between min-h-[160px] py-3">
+          <div className="flex items-center justify-between min-h-[160px]">
 
             {/* Logo */}
             <Link href="/" onClick={close} className="flex items-center shrink-0">
