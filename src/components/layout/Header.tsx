@@ -58,19 +58,15 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
 
             {/* Logo */}
-            <Link href="/" onClick={close} className="flex items-center gap-3 shrink-0">
+            <Link href="/" onClick={close} className="flex items-center shrink-0">
               <Image
                 src="/logo.png"
                 alt="Blue Bay Mobility"
-                width={52}
-                height={52}
+                width={80}
+                height={80}
                 className="object-contain"
                 priority
               />
-              <div className="hidden sm:block leading-tight">
-                <span className="block text-lg font-bold text-[#0A2463] tracking-tight">Blue Bay</span>
-                <span className="block text-xs font-semibold text-slate-500 uppercase tracking-widest">Mobility</span>
-              </div>
             </Link>
 
             {/* Desktop nav */}
