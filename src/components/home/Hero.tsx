@@ -16,11 +16,6 @@ export default function Hero() {
 
           {/* Left */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-[#0A2463] text-sm font-bold px-4 py-2 rounded-full mb-7">
-              <span className="w-2 h-2 rounded-full bg-[#0EA5E9] animate-pulse shrink-0" />
-              Complex Rehab Technology Provider
-            </div>
-
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-[1.08] mb-6">
               The right mobility equipment,{" "}
               <span className="text-[#0A2463]">matched to you.</span>
