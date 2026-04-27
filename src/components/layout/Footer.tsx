@@ -32,28 +32,8 @@ export default function Footer() {
   return (
     <footer style={{ background: "#071A4A" }} className="text-white">
 
-      {/* CTA strip */}
-      <div style={{ background: "#0A2463", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-        <div className="container py-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="text-2xl font-bold text-white">Not sure where to start?</h2>
-            <p className="text-blue-300 mt-1 text-lg">Take our 2-minute quiz or speak directly with a specialist.</p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <Link href="/quiz"
-              className="btn"
-              style={{ background: "white", color: "#0A2463", borderColor: "white", padding: "12px 24px", fontWeight: 700, fontSize: "15px" }}>
-              Take the Quiz
-            </Link>
-            <Link href="/consultation" className="btn btn-sky" style={{ padding: "12px 24px", fontSize: "15px" }}>
-              Book Consultation
-            </Link>
-          </div>
-        </div>
-      </div>
-
       {/* Main footer */}
-      <div className="container py-14">
+      <div className="container py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
           {/* Brand */}
@@ -123,7 +103,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-        <div className="container py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-blue-400">
+        <div className="container py-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-blue-400">
           <p>© {new Date().getFullYear()} Blue Bay Mobility Inc. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             <Link href="/privacy"  className="hover:text-white transition-colors">Privacy Policy</Link>
