@@ -14,7 +14,7 @@ export interface Product {
   category: ProductCategory;
   categoryLabel: string;
   tagline: string;
-  image: string;
+  image: string;  // Unsplash URL
   priceRange: string;
   requiresConsultation: boolean;
   isFeatured?: boolean;
@@ -34,7 +34,7 @@ export const products: Product[] = [
     category: "power-wheelchairs",
     categoryLabel: "Power Wheelchairs",
     tagline: "Advanced power wheelchair for complex rehab needs",
-    image: "/products/permobil-m3.jpg",
+    image: "https://images.unsplash.com/photo-1619992174810-3b90e10a0acf?w=600&q=80&fit=crop",
     priceRange: "Contact for Quote",
     requiresConsultation: true,
     isFeatured: true,
@@ -70,7 +70,7 @@ export const products: Product[] = [
     category: "power-wheelchairs",
     categoryLabel: "Power Wheelchairs",
     tagline: "Rear-wheel drive for active community mobility",
-    image: "/products/quickie-q50.jpg",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80&fit=crop",
     priceRange: "Contact for Quote",
     requiresConsultation: true,
     isFeatured: true,
@@ -103,7 +103,7 @@ export const products: Product[] = [
     category: "manual-wheelchairs",
     categoryLabel: "Manual Wheelchairs",
     tagline: "Ultra-lightweight titanium rigid frame",
-    image: "/products/tilite-aero.jpg",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80&fit=crop",
     priceRange: "Contact for Quote",
     requiresConsultation: true,
     isFeatured: true,
@@ -136,7 +136,7 @@ export const products: Product[] = [
     category: "seating-positioning",
     categoryLabel: "Seating & Positioning",
     tagline: "Air-cell cushion for pressure injury prevention",
-    image: "/products/roho-cushion.jpg",
+    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&q=80&fit=crop",
     priceRange: "Contact for Quote",
     requiresConsultation: false,
     badges: ["Pressure Relief", "Insurance Eligible"],
@@ -168,7 +168,7 @@ export const products: Product[] = [
     category: "power-scooters",
     categoryLabel: "Power Scooters",
     tagline: "Lightweight travel scooter for everyday independence",
-    image: "/products/pride-gogo.jpg",
+    image: "https://images.unsplash.com/photo-1624727828489-a1e03b79bba8?w=600&q=80&fit=crop",
     priceRange: "$1,200 – $1,800",
     requiresConsultation: false,
     isFeatured: false,
@@ -202,7 +202,7 @@ export const products: Product[] = [
     category: "walkers-rollators",
     categoryLabel: "Walkers & Rollators",
     tagline: "Sleek, lightweight rollator for active users",
-    image: "/products/drive-nitro.jpg",
+    image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?w=600&q=80&fit=crop",
     priceRange: "$180 – $240",
     requiresConsultation: false,
     badges: ["Ready to Ship", "Lightweight"],
