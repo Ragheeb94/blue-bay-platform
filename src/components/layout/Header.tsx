@@ -62,8 +62,8 @@ export default function Header() {
               <Image
                 src="/logo.png"
                 alt="Blue Bay Mobility"
-                width={110}
-                height={110}
+                width={140}
+                height={140}
                 className="object-contain"
                 priority
               />
