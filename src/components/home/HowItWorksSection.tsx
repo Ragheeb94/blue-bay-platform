@@ -54,23 +54,37 @@ export default function HowItWorksSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {/* Steps grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {steps.map((step, i) => (
-            <div key={step.number} className="flex flex-col items-center lg:items-start text-center lg:text-left">
-              {/* Step circle */}
-              <div className="w-16 h-16 rounded-full flex flex-col items-center justify-center mb-4 shrink-0"
-                style={{ background: "linear-gradient(135deg, #0A2463, #1E3A8A)", boxShadow: "0 4px 16px rgba(10,36,99,0.3)" }}>
-                <span className="text-[10px] font-bold text-blue-300 uppercase leading-none">Step</span>
-                <span className="text-xl font-bold text-white leading-none">{step.number}</span>
+            <div key={step.number} className="flex flex-col items-center text-center">
+
+              {/* Circle + connector row */}
+              <div className="relative flex items-center justify-center w-full mb-6">
+                {/* Left connector line */}
+                {i > 0 && (
+                  <div className="hidden lg:block absolute right-1/2 top-1/2 -translate-y-1/2 h-px bg-slate-300"
+                    style={{ left: 0, right: "calc(50% + 32px)" }} />
+                )}
+                {/* Right connector line */}
+                {i < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 h-px bg-slate-300"
+                    style={{ left: "calc(50% + 32px)", right: 0 }} />
+                )}
+
+                {/* Circle */}
+                <div
+                  className="w-16 h-16 rounded-full flex flex-col items-center justify-center shrink-0 relative z-10"
+                  style={{ background: "linear-gradient(135deg, #0A2463, #1E3A8A)", boxShadow: "0 4px 16px rgba(10,36,99,0.3)" }}
+                >
+                  <span className="text-[9px] font-bold text-blue-300 uppercase leading-none tracking-wider">Step</span>
+                  <span className="text-xl font-bold text-white leading-none">{step.number}</span>
+                </div>
               </div>
 
-              {/* Connector (desktop only) */}
-              {i < steps.length - 1 && (
-                <div className="hidden lg:block w-full h-px bg-slate-300 mt-8 mb-4 relative" style={{marginTop:"-40px", marginBottom:"40px", marginLeft:"32px"}} />
-              )}
-
-              <h3 className="text-[17px] font-bold text-slate-900 mb-2">{step.title}</h3>
-              <p className="text-slate-600 text-[15px] leading-relaxed mb-3">{step.description}</p>
+              {/* Text */}
+              <h3 className="text-[16px] font-bold text-slate-900 mb-2">{step.title}</h3>
+              <p className="text-slate-600 text-[14px] leading-relaxed mb-3">{step.description}</p>
               {step.cta && step.href && (
                 <Link href={step.href} className="inline-flex items-center gap-1 text-[#0A2463] font-bold text-[14px] hover:gap-2 transition-all">
                   {step.cta} <ArrowRight size={14} />
