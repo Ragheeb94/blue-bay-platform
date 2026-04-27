@@ -11,7 +11,7 @@ const trust = [
 export default function Hero() {
   return (
     <section className="bg-white overflow-hidden">
-      <div className="container py-20 md:py-28">
+      <div className="container py-[72px]">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left */}

@@ -244,12 +244,17 @@ export default function QuizFlow() {
           className="flex items-center gap-2 px-5 py-3 text-slate-600 font-semibold rounded-xl hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors text-[15px]">
           <ArrowLeft size={18} /> Back
         </button>
-        <button onClick={handleNext} disabled={!selectedOption}
-          className="btn btn-primary btn-lg"
-          style={{ opacity: selectedOption ? 1 : 0.4, pointerEvents: selectedOption ? "auto" : "none" }}>
-          {currentStep === quizSteps.length - 1 ? "See my results" : "Next"}
-          <ArrowRight size={20} />
-        </button>
+        <div className="flex flex-col items-end gap-2">
+          {!selectedOption && (
+            <p className="text-sm text-slate-400">Select an option above to continue</p>
+          )}
+          <button onClick={handleNext} disabled={!selectedOption}
+            className="btn btn-primary btn-lg"
+            style={{ opacity: selectedOption ? 1 : 0.35, pointerEvents: selectedOption ? "auto" : "none" }}>
+            {currentStep === quizSteps.length - 1 ? "See my results" : "Next"}
+            <ArrowRight size={20} />
+          </button>
+        </div>
       </div>
     </div>
   );

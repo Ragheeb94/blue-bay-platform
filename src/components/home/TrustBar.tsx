@@ -25,11 +25,22 @@ const trustPoints = [
 
 export default function TrustBar() {
   return (
-    <section className="section bg-white">
+    <section className="section" style={{ background: "#F0F7FF" }}>
       <div className="container">
 
+        {/* Section intro */}
+        <div className="text-center mb-12">
+          <p className="section-label mb-3">Our Track Record</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Results that speak for themselves
+          </h2>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            Two decades of clinical expertise, thousands of lives improved.
+          </p>
+        </div>
+
         {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-16">
           {trustStats.map((stat, i) => {
             const Icon = icons[i];
             return (
@@ -45,7 +56,7 @@ export default function TrustBar() {
         </div>
 
         {/* Why Blue Bay */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center bg-white rounded-3xl p-10 shadow-sm border border-slate-100">
           <div>
             <p className="section-label mb-4">Why Blue Bay</p>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">

@@ -55,16 +55,17 @@ export default function Header() {
         scrolled && "shadow-md"
       )}>
         <div className="container">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
 
             {/* Logo */}
             <Link href="/" onClick={close} className="flex items-center shrink-0">
               <Image
                 src="/logo.png"
                 alt="Blue Bay Mobility"
-                width={80}
-                height={80}
+                width={110}
+                height={110}
                 className="object-contain"
+                style={{ mixBlendMode: "multiply" }}
                 priority
               />
             </Link>

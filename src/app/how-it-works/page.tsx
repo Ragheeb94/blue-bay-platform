@@ -154,12 +154,12 @@ export default function HowItWorksPage() {
       <main id="main-content" className="flex-1">
         {/* Hero */}
         <div className="bg-gradient-to-br from-[#0b2d6b] to-[#1a4fa0] text-white">
-          <div className="container py-20 md:py-28">
+          <div className="container py-[72px]">
             <div className="max-w-3xl">
               <div className="text-sm font-semibold text-[#93c5fd] uppercase tracking-wider mb-4">
                 The Process
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 How it works — every step explained
               </h1>
               <p className="text-2xl text-[#93c5fd] leading-relaxed mb-8">
@@ -335,7 +335,7 @@ export default function HowItWorksPage() {
         </div>
 
         {/* CTA */}
-        <div className="bg-[#0b2d6b] py-20">
+        <div className="bg-[#0b2d6b] section">
           <div className="container text-center">
             <h2 className="text-4xl font-bold text-white mb-4">Ready to get started?</h2>
             <p className="text-xl text-[#93c5fd] mb-8 max-w-xl mx-auto">

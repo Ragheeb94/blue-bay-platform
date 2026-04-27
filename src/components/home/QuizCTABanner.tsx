@@ -10,7 +10,7 @@ const benefits = [
 
 export default function QuizCTABanner() {
   return (
-    <section style={{ background: "linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #0A2463 100%)" }} className="py-20">
+    <section style={{ background: "linear-gradient(135deg, #0A2463 0%, #1E3A8A 50%, #0A2463 100%)" }} className="section">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
 
