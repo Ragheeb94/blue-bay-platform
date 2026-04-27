@@ -68,8 +68,8 @@ export default function Header() {
                 priority
               />
               <div className="hidden sm:block leading-tight">
-                <span className="block text-xl font-bold text-[#0A2463] tracking-tight">Blue Bay Mobility</span>
-                <span className="block text-xs font-semibold text-slate-400 uppercase tracking-widest">CRT Provider</span>
+                <span className="block text-lg font-bold text-[#0A2463] tracking-tight">Blue Bay</span>
+                <span className="block text-sm font-semibold text-slate-500 tracking-wide">Mobility</span>
               </div>
             </Link>
 
