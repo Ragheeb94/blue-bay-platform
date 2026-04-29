@@ -70,20 +70,22 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
           {product.categoryLabel} · {product.brand}
         </div>
-        <h3 className="text-[17px] font-bold text-slate-900 mb-2 group-hover:text-[#0A2463] transition-colors leading-tight">
+        <h3 className="text-[17px] font-bold text-slate-900 mb-2 group-hover:text-[#0A2463] transition-colors leading-tight line-clamp-2" style={{ minHeight: "2.65rem" }}>
           {product.name}
         </h3>
-        <p className="text-slate-500 text-sm leading-relaxed mb-4">{product.tagline}</p>
+        <p className="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2" style={{ minHeight: "2.75rem" }}>{product.tagline}</p>
 
-        {product.goodFor.length > 0 && (
-          <div className="mb-3">
-            <div className="text-xs font-bold text-green-600 uppercase tracking-wider mb-1">Good for</div>
-            <div className="text-sm text-slate-600">{product.goodFor[0]}</div>
-          </div>
-        )}
+        <div className="mb-3" style={{ minHeight: "2.75rem" }}>
+          {product.goodFor.length > 0 && (
+            <>
+              <div className="text-xs font-bold text-green-600 uppercase tracking-wider mb-1">Good for</div>
+              <div className="text-sm text-slate-600 line-clamp-1">{product.goodFor[0]}</div>
+            </>
+          )}
+        </div>
 
-        <div className="font-bold text-slate-900 text-[15px] mb-4 mt-auto pt-1">
-          {product.priceRange}
+        <div className="font-bold text-slate-900 text-[15px] mb-4 mt-auto pt-1" style={{ minHeight: "1.5rem" }}>
+          {!product.requiresConsultation && product.priceRange}
         </div>
 
         {/* CTAs — stacked full-width for consistent sizing */}

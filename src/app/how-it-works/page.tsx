@@ -35,7 +35,7 @@ const steps = [
       "Clinician referral pathway for OTs and PTs",
       "Direct phone line if you prefer to call",
     ],
-    color: "#0b2d6b",
+    color: "#0A2463",
     bg: "#eef4ff",
   },
   {
@@ -115,7 +115,7 @@ const steps = [
       "Full training for user and caregivers",
       "30-day follow-up included",
     ],
-    color: "#0b2d6b",
+    color: "#0A2463",
     bg: "#eef4ff",
   },
 ];
@@ -153,16 +153,16 @@ export default function HowItWorksPage() {
       <Header />
       <main id="main-content" className="flex-1">
         {/* Hero */}
-        <div className="bg-gradient-to-br from-[#0b2d6b] to-[#1a4fa0] text-white">
+        <div className="bg-gradient-to-br from-[#0A2463] to-[#1E3A8A] text-white">
           <div className="container py-[72px]">
             <div className="max-w-3xl">
-              <div className="text-sm font-semibold text-[#93c5fd] uppercase tracking-wider mb-4">
+              <div className="text-sm font-bold uppercase tracking-widest text-blue-300 mb-4">
                 The Process
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 How it works, every step explained
               </h1>
-              <p className="text-2xl text-[#93c5fd] leading-relaxed mb-8">
+              <p className="text-xl text-blue-200 leading-relaxed mb-8">
                 Complex rehab equipment is not a simple purchase. It&apos;s a clinical process —
                 and we guide you through every step, handle insurance, and stay with you through
                 delivery.
@@ -170,7 +170,7 @@ export default function HowItWorksPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/consultation"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0b2d6b] font-bold text-lg rounded-xl hover:bg-[#eef4ff] transition-colors"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0A2463] font-bold text-lg rounded-xl hover:bg-[#eef4ff] transition-colors"
                 >
                   Start My Consultation <ArrowRight size={20} />
                 </Link>
@@ -298,7 +298,7 @@ export default function HowItWorksPage() {
                 </div>
                 <div className="mt-5 text-sm text-[#475569]">
                   Don&apos;t see yours? We work with most major insurers.{" "}
-                  <Link href="/consultation" className="text-[#0b2d6b] font-semibold hover:underline">
+                  <Link href="/consultation" className="text-[#0A2463] font-semibold hover:underline">
                     Contact us
                   </Link>
                   .
@@ -322,7 +322,7 @@ export default function HowItWorksPage() {
               {faqs.map((faq, i) => (
                 <div key={i} className="card p-6">
                   <div className="flex items-start gap-4">
-                    <HelpCircle size={22} className="text-[#0b2d6b] flex-shrink-0 mt-0.5" />
+                    <HelpCircle size={22} className="text-[#0A2463] flex-shrink-0 mt-0.5" />
                     <div>
                       <h3 className="font-bold text-[#0f172a] text-lg mb-2">{faq.q}</h3>
                       <p className="text-[#475569] text-base leading-relaxed">{faq.a}</p>
@@ -335,17 +335,17 @@ export default function HowItWorksPage() {
         </div>
 
         {/* CTA */}
-        <div className="bg-[#0b2d6b] section">
+        <div className="bg-[#0A2463] section">
           <div className="container text-center">
             <h2 className="text-4xl font-bold text-white mb-4">Ready to get started?</h2>
-            <p className="text-xl text-[#93c5fd] mb-8 max-w-xl mx-auto">
+            <p className="text-xl text-blue-200 mb-8 max-w-xl mx-auto">
               Browse our products or book a consultation directly with one of our
               certified specialists.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0b2d6b] font-bold text-lg rounded-xl hover:bg-[#eef4ff] transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0A2463] font-bold text-lg rounded-xl hover:bg-[#eef4ff] transition-colors"
               >
                 Find My Equipment <ArrowRight size={20} />
               </Link>
