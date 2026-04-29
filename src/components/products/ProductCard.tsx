@@ -67,14 +67,18 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* Body */}
       <div className="p-5 flex flex-col flex-1">
-        <div className="text-xs font-bold text-sky-600 uppercase tracking-wider mb-1">
+        {/* Category + brand — fixed 2-line height to prevent layout shift */}
+        <div className="text-xs font-bold text-sky-600 uppercase tracking-wider mb-1 line-clamp-2" style={{ minHeight: "2rem" }}>
           {product.categoryLabel} · {product.brand}
         </div>
+        {/* Name — clamped to 2 lines */}
         <h3 className="text-[17px] font-bold text-slate-900 mb-2 group-hover:text-[#0A2463] transition-colors leading-tight line-clamp-2" style={{ minHeight: "2.65rem" }}>
           {product.name}
         </h3>
+        {/* Tagline — clamped to 2 lines */}
         <p className="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2" style={{ minHeight: "2.75rem" }}>{product.tagline}</p>
 
+        {/* Good for — always reserves space */}
         <div className="mb-3" style={{ minHeight: "2.75rem" }}>
           {product.goodFor.length > 0 && (
             <>
@@ -84,8 +88,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
+        {/* Price — hidden when the secondary button already says "Contact for Quote" */}
         <div className="font-bold text-slate-900 text-[15px] mb-4 mt-auto pt-1" style={{ minHeight: "1.5rem" }}>
-          {!product.requiresConsultation && product.priceRange}
+          {canAddToCart && product.priceRange}
         </div>
 
         {/* CTAs — stacked full-width for consistent sizing */}
