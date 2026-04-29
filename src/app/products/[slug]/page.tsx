@@ -118,7 +118,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                         href="tel:+18889990072"
                         className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-[#0b2d6b] text-[#0b2d6b] font-semibold rounded-xl hover:bg-[#eef4ff] transition-colors text-lg"
                       >
-                        <Phone size={20} /> Talk to a Specialist
+                        <Phone size={20} /> Call a Specialist
                       </a>
                     </div>
                   </div>

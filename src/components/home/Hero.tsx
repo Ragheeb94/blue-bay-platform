@@ -32,7 +32,7 @@ export default function Hero() {
                 Find My Equipment <ArrowRight size={20} />
               </Link>
               <Link href="/consultation" className="btn btn-outline btn-lg">
-                Talk to a Specialist
+                Book Consultation
               </Link>
             </div>
 

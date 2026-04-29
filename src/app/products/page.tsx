@@ -65,7 +65,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                   className="inline-flex items-center gap-2 px-5 py-3 bg-[#eef4ff] text-[#0b2d6b] font-semibold rounded-xl text-base border-2 border-[#0b2d6b] hover:bg-[#d9e7ff] transition-colors"
                 >
                   <SlidersHorizontal size={18} />
-                  Not sure? Talk to a Specialist
+                  Not sure? Book Consultation
                 </Link>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                     href="/consultation"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#0b2d6b] text-white font-semibold rounded-xl hover:bg-[#0e3a87] transition-colors"
                   >
-                    Talk to a Specialist <ArrowRight size={18} />
+                    Book Consultation <ArrowRight size={18} />
                   </Link>
                 </div>
               ) : (
