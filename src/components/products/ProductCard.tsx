@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MessageSquare } from "lucide-react";
+import { ArrowRight, MessageSquare, ShoppingCart } from "lucide-react";
 import type { Product } from "@/lib/data";
+import { useCart } from "@/lib/cart-context";
 
 interface ProductCardProps {
   product: Product;
@@ -19,6 +22,20 @@ const badgeStyle: Record<string, string> = {
 };
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const { addItem } = useCart();
+
+  function handleAddToCart() {
+    addItem({
+      slug: product.slug,
+      name: product.name,
+      brand: product.brand,
+      price: product.price!,
+      priceLabel: product.priceRange,
+      image: product.image,
+      categoryLabel: product.categoryLabel,
+    });
+  }
+
   return (
     <div className="card flex flex-col group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       {/* Image */}
@@ -77,13 +94,24 @@ export default function ProductCard({ product }: ProductCardProps) {
           >
             View Details <ArrowRight size={14} />
           </Link>
-          <Link href={`/consultation?product=${product.slug}`}
-            className="flex items-center justify-center px-3 py-2.5 border-2 rounded-lg transition-colors text-[#0A2463] hover:bg-blue-50"
-            style={{ borderColor: "#0A2463" }}
-            title="Request consultation"
-          >
-            <MessageSquare size={16} />
-          </Link>
+          {!product.requiresConsultation && product.price ? (
+            <button
+              onClick={handleAddToCart}
+              className="flex items-center justify-center px-3 py-2.5 border-2 rounded-lg transition-colors text-[#0A2463] hover:bg-blue-50"
+              style={{ borderColor: "#0A2463" }}
+              title="Add to cart"
+            >
+              <ShoppingCart size={16} />
+            </button>
+          ) : (
+            <Link href={`/consultation?product=${product.slug}`}
+              className="flex items-center justify-center px-3 py-2.5 border-2 rounded-lg transition-colors text-[#0A2463] hover:bg-blue-50"
+              style={{ borderColor: "#0A2463" }}
+              title="Request consultation"
+            >
+              <MessageSquare size={16} />
+            </Link>
+          )}
         </div>
       </div>
     </div>

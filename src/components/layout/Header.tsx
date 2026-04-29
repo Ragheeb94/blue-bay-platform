@@ -3,8 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/lib/cart-context";
 
 const productLinks = [
   { label: "Power Wheelchairs",   href: "/products?category=power-wheelchairs",  badge: "CRT" },
@@ -25,6 +26,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen]       = useState(false);
   const [dropdown, setDropdown]           = useState<string | null>(null);
   const [scrolled, setScrolled]           = useState(false);
+  const { itemCount, openCart } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -151,22 +153,48 @@ export default function Header() {
 
             {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-3">
-              <Link href="/quiz" className="btn btn-outline text-sm px-5 py-2.5" style={{minHeight: "44px", fontSize:"15px"}}>
+              <Link href="/quiz" className="btn btn-primary text-sm px-5 py-2.5" style={{minHeight:"44px", fontSize:"15px"}}>
                 Find My Equipment
               </Link>
-              <Link href="/consultation" className="btn btn-primary text-sm px-5 py-2.5" style={{minHeight:"44px", fontSize:"15px"}}>
+              <Link href="/consultation" className="btn btn-outline text-sm px-5 py-2.5" style={{minHeight: "44px", fontSize:"15px"}}>
                 Book Consultation
               </Link>
+              <button
+                onClick={openCart}
+                className="relative p-2.5 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
+                aria-label={`Cart${itemCount > 0 ? ` (${itemCount} items)` : ""}`}
+              >
+                <ShoppingCart size={22} />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#0A2463] text-white text-[10px] font-bold flex items-center justify-center">
+                    {itemCount > 9 ? "9+" : itemCount}
+                  </span>
+                )}
+              </button>
             </div>
 
-            {/* Mobile toggle */}
-            <button
-              className="lg:hidden p-2.5 rounded-lg hover:bg-slate-100 text-slate-700"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+            {/* Mobile cart + toggle */}
+            <div className="lg:hidden flex items-center gap-1">
+              <button
+                onClick={openCart}
+                className="relative p-2.5 rounded-lg hover:bg-slate-100 text-slate-700 transition-colors"
+                aria-label="Open cart"
+              >
+                <ShoppingCart size={22} />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#0A2463] text-white text-[10px] font-bold flex items-center justify-center">
+                    {itemCount > 9 ? "9+" : itemCount}
+                  </span>
+                )}
+              </button>
+              <button
+                className="p-2.5 rounded-lg hover:bg-slate-100 text-slate-700"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              >
+                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
         </div>
 
