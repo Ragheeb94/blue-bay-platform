@@ -93,7 +93,8 @@ export default function Header() {
                   <ChevronDown size={15} className={cn("transition-transform", dropdown === "products" && "rotate-180")} />
                 </button>
                 {dropdown === "products" && (
-                  <div className="absolute top-full left-0 mt-1 w-72 bg-white border border-slate-200 rounded-xl shadow-xl p-2 z-50">
+                  <div className="absolute top-full left-0 w-72 pt-1 z-50">
+                  <div className="bg-white border border-slate-200 rounded-xl shadow-xl p-2">
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 py-2">Categories</p>
                     {productLinks.map(item => (
                       <Link key={item.href} href={item.href} onClick={close}
@@ -110,6 +111,7 @@ export default function Header() {
                         View all products →
                       </Link>
                     </div>
+                  </div>
                   </div>
                 )}
               </div>
@@ -129,7 +131,8 @@ export default function Header() {
                   <ChevronDown size={15} className={cn("transition-transform", dropdown === "who" && "rotate-180")} />
                 </button>
                 {dropdown === "who" && (
-                  <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-slate-200 rounded-xl shadow-xl p-2 z-50">
+                  <div className="absolute top-full left-0 w-64 pt-1 z-50">
+                  <div className="bg-white border border-slate-200 rounded-xl shadow-xl p-2">
                     {whoLinks.map(item => (
                       <Link key={item.href} href={item.href} onClick={close}
                         className="flex flex-col px-3 py-2.5 rounded-lg hover:bg-blue-50 transition-colors">
@@ -137,6 +140,7 @@ export default function Header() {
                         <span className="text-sm text-slate-500">{item.desc}</span>
                       </Link>
                     ))}
+                  </div>
                   </div>
                 )}
               </div>
@@ -153,7 +157,7 @@ export default function Header() {
 
             {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-3">
-              <Link href="/quiz" className="btn btn-primary text-sm px-5 py-2.5" style={{minHeight:"44px", fontSize:"15px"}}>
+              <Link href="/products" className="btn btn-primary text-sm px-5 py-2.5" style={{minHeight:"44px", fontSize:"15px"}}>
                 Find My Equipment
               </Link>
               <Link href="/consultation" className="btn btn-outline text-sm px-5 py-2.5" style={{minHeight: "44px", fontSize:"15px"}}>
@@ -218,7 +222,7 @@ export default function Header() {
               <Link href="/how-it-works" onClick={close} className="px-3 py-3 text-slate-800 font-semibold rounded-lg hover:bg-slate-50 text-lg">How It Works</Link>
               <Link href="/tracking"     onClick={close} className="px-3 py-3 text-slate-800 font-semibold rounded-lg hover:bg-slate-50 text-lg">Track My Order</Link>
               <div className="h-px bg-slate-200 my-2" />
-              <Link href="/quiz"         onClick={close} className="btn btn-outline w-full justify-center text-lg py-4">Find My Equipment</Link>
+              <Link href="/products"         onClick={close} className="btn btn-outline w-full justify-center text-lg py-4">Find My Equipment</Link>
               <Link href="/consultation" onClick={close} className="btn btn-primary w-full justify-center text-lg py-4">Book Consultation</Link>
             </div>
           </div>

@@ -71,7 +71,7 @@ export default function WhoWeHelpPage() {
                   functional goals. You don&apos;t have to navigate the system alone.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/quiz" className="btn btn-primary btn-lg">
+                  <Link href="/products" className="btn btn-primary btn-lg">
                     Find My Equipment <ArrowRight size={20} />
                   </Link>
                   <Link href="/consultation" className="btn btn-outline btn-lg">
@@ -269,10 +269,10 @@ export default function WhoWeHelpPage() {
           <div className="container text-center">
             <h2 className="text-4xl font-bold text-white mb-4">Ready to take the next step?</h2>
             <p className="text-xl text-blue-200 mb-8 max-w-xl mx-auto">
-              Start with our 2-minute quiz, book a consultation, or call us directly.
+              Browse our products, book a consultation, or call us directly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/quiz" className="btn btn-lg" style={{ background: "white", color: "#0A2463", borderColor: "white", fontWeight: 700 }}>
+              <Link href="/products" className="btn btn-lg" style={{ background: "white", color: "#0A2463", borderColor: "white", fontWeight: 700 }}>
                 Find My Equipment <ArrowRight size={20} />
               </Link>
               <Link href="/consultation" className="btn btn-outline-white btn-lg">

@@ -230,10 +230,10 @@ export default function AboutPage() {
 
               <div className="card p-8">
                 <h3 className="font-bold text-slate-900 text-xl mb-2">Ready to get started?</h3>
-                <p className="text-slate-600 mb-6">Take the quiz for instant recommendations, or book a consultation with a certified specialist.</p>
+                <p className="text-slate-600 mb-6">Browse our products or book a consultation with a certified specialist.</p>
                 <div className="space-y-3">
-                  <Link href="/quiz" className="btn btn-primary w-full justify-center">
-                    Take the Equipment Quiz <ArrowRight size={18} />
+                  <Link href="/products" className="btn btn-primary w-full justify-center">
+                    Browse Products <ArrowRight size={18} />
                   </Link>
                   <Link href="/consultation" className="btn btn-outline w-full justify-center">
                     Book a Consultation

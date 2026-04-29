@@ -28,9 +28,9 @@ const steps = [
     title: "Submit your request",
     duration: "5 minutes",
     description:
-      "Take our guided equipment quiz or fill out a consultation form. Tell us who you are, what you need, and your insurance information. The more you share, the faster we can prepare.",
+      "Browse our product catalogue or fill out a consultation form. Tell us who you are, what you need, and your insurance information. The more you share, the faster we can prepare.",
     details: [
-      "2-minute quiz for quick recommendations",
+      "Browse products by category for quick recommendations",
       "Detailed consultation form for complex situations",
       "Clinician referral pathway for OTs and PTs",
       "Direct phone line if you prefer to call",
@@ -175,10 +175,10 @@ export default function HowItWorksPage() {
                   Start My Consultation <ArrowRight size={20} />
                 </Link>
                 <Link
-                  href="/quiz"
+                  href="/products"
                   className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-xl hover:bg-white/10 transition-colors"
                 >
-                  Take the Quiz
+                  Browse Products
                 </Link>
               </div>
             </div>
@@ -339,12 +339,12 @@ export default function HowItWorksPage() {
           <div className="container text-center">
             <h2 className="text-4xl font-bold text-white mb-4">Ready to get started?</h2>
             <p className="text-xl text-[#93c5fd] mb-8 max-w-xl mx-auto">
-              Take the quiz to get recommendations, or book a consultation directly with one of our
+              Browse our products or book a consultation directly with one of our
               certified specialists.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/quiz"
+                href="/products"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0b2d6b] font-bold text-lg rounded-xl hover:bg-[#eef4ff] transition-colors"
               >
                 Find My Equipment <ArrowRight size={20} />

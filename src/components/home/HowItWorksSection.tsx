@@ -5,9 +5,9 @@ const steps = [
   {
     number: "01",
     title: "Submit Your Request",
-    description: "Take our 2-minute quiz or fill out a consultation form. Tell us about your needs, environment, and insurance.",
-    href: "/quiz",
-    cta: "Start the quiz",
+    description: "Browse our product catalogue or fill out a consultation form. Tell us about your needs, environment, and insurance.",
+    href: "/products",
+    cta: "Browse products",
   },
   {
     number: "02",

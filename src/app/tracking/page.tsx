@@ -275,10 +275,10 @@ export default function TrackingPage() {
                     Book Consultation
                   </a>
                   <a
-                    href="/quiz"
+                    href="/products"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#0b2d6b] text-[#0b2d6b] font-semibold rounded-xl hover:bg-[#eef4ff] transition-colors"
                   >
-                    Take the Equipment Quiz
+                    Browse Products
                   </a>
                 </div>
               </div>

@@ -56,7 +56,6 @@ export const products: Product[] = [
       { label: "Range", value: "Up to 14.9 miles" },
       { label: "Weight Capacity", value: "300 lbs" },
       { label: "Seat Width", value: "12\"–22\" (custom)" },
-      { label: "Water Resistance", value: "Weather-resistant (not waterproof)" },
       { label: "Tilt", value: "0°–55° power tilt" },
       { label: "Recline", value: "90°–170° power recline" },
     ],
@@ -91,7 +90,6 @@ export const products: Product[] = [
       { label: "Range", value: "Up to 16 miles" },
       { label: "Weight Capacity", value: "300 lbs" },
       { label: "Seat Width", value: "12\"–22\" (custom)" },
-      { label: "Water Resistance", value: "Weather-resistant (not waterproof)" },
     ],
     description:
       "The Quickie Q50 R offers a natural driving feel for users who spend significant time in the community. Its rear-wheel drive provides predictable handling and excellent outdoor performance.",
@@ -153,8 +151,7 @@ export const products: Product[] = [
     ],
     specs: [
       { label: "Type", value: "Air cell (interconnected)" },
-      { label: "Cover", value: "Moisture-resistant, washable" },
-      { label: "Water Resistance", value: "Cover is moisture-resistant — cushion itself is not waterproof" },
+      { label: "Cover", value: "Washable, removable" },
       { label: "Sizes", value: "Multiple widths/depths available" },
       { label: "Cell Height", value: "2\" or 4\" available" },
     ],
@@ -191,7 +188,6 @@ export const products: Product[] = [
       { label: "Max Speed", value: "3.7 mph" },
       { label: "Range", value: "Up to 9.5 miles" },
       { label: "Weight Capacity", value: "300 lbs" },
-      { label: "Water Resistance", value: "Not waterproof — avoid rain" },
     ],
     description:
       "The Go-Go Elite Traveller is one of the most popular travel scooters for good reason — it disassembles quickly into airline-friendly pieces without tools. Best for supplemental, not primary, mobility.",

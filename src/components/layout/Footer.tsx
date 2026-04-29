@@ -25,7 +25,7 @@ const companyLinks = [
   { label: "Who We Help",             href: "/who-we-help" },
   { label: "Track My Order",          href: "/tracking" },
   { label: "Book Consultation",       href: "/consultation" },
-  { label: "Find My Equipment Quiz",  href: "/quiz" },
+  { label: "Find My Equipment",        href: "/products" },
 ];
 
 export default function Footer() {

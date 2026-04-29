@@ -61,11 +61,11 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               </div>
               <div className="flex gap-3">
                 <Link
-                  href="/quiz"
+                  href="/consultation"
                   className="inline-flex items-center gap-2 px-5 py-3 bg-[#eef4ff] text-[#0b2d6b] font-semibold rounded-xl text-base border-2 border-[#0b2d6b] hover:bg-[#d9e7ff] transition-colors"
                 >
                   <SlidersHorizontal size={18} />
-                  Not sure? Take the Quiz
+                  Not sure? Talk to a Specialist
                 </Link>
               </div>
             </div>

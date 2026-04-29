@@ -28,7 +28,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link href="/quiz" className="btn btn-primary btn-lg">
+              <Link href="/products" className="btn btn-primary btn-lg">
                 Find My Equipment <ArrowRight size={20} />
               </Link>
               <Link href="/consultation" className="btn btn-outline btn-lg">

@@ -9,7 +9,7 @@ const audiences = [
     description:
       "Whether you're newly injured or your needs have changed, we guide you through every option and make sure your equipment is perfectly configured for your body.",
     cta: "Start my search",
-    href: "/quiz",
+    href: "/products",
     iconBg: "#DBEAFE",
     iconColor: "#0A2463",
     ctaColor: "#0A2463",

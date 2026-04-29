@@ -183,15 +183,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                             {spec.label}
                           </td>
                           <td className="py-3.5 px-4 text-[#475569] text-base rounded-r-lg">
-                            {/* Highlight water resistance spec clearly */}
-                            {spec.label === "Water Resistance" ? (
-                              <div className="flex items-start gap-2">
-                                <Info size={16} className="text-[#f59e0b] flex-shrink-0 mt-0.5" />
-                                <span>{spec.value}</span>
-                              </div>
-                            ) : (
-                              spec.value
-                            )}
+                            {spec.value}
                           </td>
                         </tr>
                       ))}
@@ -199,24 +191,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   </table>
                 </div>
 
-                {/* Spec clarification note */}
-                {product.specs.some((s) => s.label === "Water Resistance") && (
-                  <div className="mt-5 flex items-start gap-3 bg-[#fffbeb] border border-[#fde68a] rounded-xl p-4">
-                    <AlertTriangle size={18} className="text-[#f59e0b] flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-[#92400e] text-sm mb-1">
-                        Water-resistant vs. waterproof — what&apos;s the difference?
-                      </div>
-                      <div className="text-[#78350f] text-sm leading-relaxed">
-                        <strong>Water-resistant</strong> means the equipment can handle brief
-                        exposure to light rain or splashing without damage.{" "}
-                        <strong>Waterproof</strong> means it can be submerged or exposed to heavy
-                        rain. This product is <em>water-resistant only</em> — avoid exposing it to
-                        heavy rain, spray, or submersion.
-                      </div>
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* CRT note */}
