@@ -26,6 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   function handleAddToCart() {
     addItem({
+      cartKey: product.slug,
       slug: product.slug,
       name: product.name,
       brand: product.brand,
@@ -33,6 +34,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       priceLabel: product.priceRange,
       image: product.image,
       categoryLabel: product.categoryLabel,
+      addOns: [],
     });
   }
 

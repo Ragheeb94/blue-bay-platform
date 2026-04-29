@@ -18,38 +18,25 @@ export default function ProductActions({ product }: ProductActionsProps) {
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const [added, setAdded] = useState(false);
 
-  const addOnTotal = (product.options ?? []).reduce((sum, opt) => {
-    if (opt.type === "checkbox" && checked[opt.id] && opt.priceAdd) {
-      return sum + opt.priceAdd;
-    }
-    if (opt.type === "select") {
-      const chosen = opt.choices?.find((c) => c.value === selections[opt.id]);
-      if (chosen?.priceAdd) return sum + chosen.priceAdd;
-    }
-    return sum;
-  }, 0);
-
-  const totalPrice = (product.price ?? 0) + addOnTotal;
-
-  // Build a readable list of all selected options for cart display
-  function buildAddOns() {
-    const list: { label: string; priceAdd: number }[] = [];
-    for (const opt of product.options ?? []) {
-      if (opt.type === "select" && selections[opt.id]) {
-        const choice = opt.choices?.find((c) => c.value === selections[opt.id]);
-        if (choice) {
-          list.push({ label: `${opt.label}: ${choice.label}`, priceAdd: choice.priceAdd ?? 0 });
-        }
-      }
-      if (opt.type === "checkbox" && checked[opt.id]) {
-        list.push({ label: opt.label, priceAdd: opt.priceAdd ?? 0 });
+  // Computed at render time — always in sync with current selections/checkboxes
+  const selectedAddOns: { label: string; priceAdd: number }[] = [];
+  for (const opt of product.options ?? []) {
+    if (opt.type === "select" && selections[opt.id]) {
+      const choice = opt.choices?.find((c) => c.value === selections[opt.id]);
+      if (choice) {
+        selectedAddOns.push({ label: `${opt.label}: ${choice.label}`, priceAdd: choice.priceAdd ?? 0 });
       }
     }
-    return list;
+    if (opt.type === "checkbox" && checked[opt.id]) {
+      selectedAddOns.push({ label: opt.label, priceAdd: opt.priceAdd ?? 0 });
+    }
   }
 
+  const addOnTotal = selectedAddOns.reduce((sum, ao) => sum + ao.priceAdd, 0);
+  const totalPrice = (product.price ?? 0) + addOnTotal;
+
   // Unique key: same product with different options = separate cart entries
-  const cartKey = `${product.slug}__${Object.entries(selections).sort().map(([k, v]) => `${k}:${v}`).join(",")}__${Object.keys(checked).filter((k) => checked[k]).sort().join(",")}`;
+  const cartKey = `${product.slug}__${selectedAddOns.map((a) => a.label).join("|")}`;
 
   function handleAddToCart() {
     addItem({
@@ -61,7 +48,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
       priceLabel: `$${totalPrice.toLocaleString()}`,
       image: product.image,
       categoryLabel: product.categoryLabel,
-      addOns: buildAddOns(),
+      addOns: selectedAddOns,
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
