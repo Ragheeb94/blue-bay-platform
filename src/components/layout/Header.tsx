@@ -83,7 +83,7 @@ export default function Header() {
                 onMouseEnter={() => setDropdown("products")}
                 onMouseLeave={() => setDropdown(null)}
               >
-                <button className={cn(
+                <Link href="/products" onClick={close} className={cn(
                   "flex items-center gap-1 px-4 py-2.5 rounded-lg text-[15px] font-semibold transition-colors",
                   dropdown === "products"
                     ? "bg-blue-50 text-[#0A2463]"
@@ -91,7 +91,7 @@ export default function Header() {
                 )}>
                   Products
                   <ChevronDown size={15} className={cn("transition-transform", dropdown === "products" && "rotate-180")} />
-                </button>
+                </Link>
                 {dropdown === "products" && (
                   <div className="absolute top-full left-0 w-72 pt-1 z-50">
                   <div className="bg-white border border-slate-200 rounded-xl shadow-xl p-2">
@@ -121,7 +121,7 @@ export default function Header() {
                 onMouseEnter={() => setDropdown("who")}
                 onMouseLeave={() => setDropdown(null)}
               >
-                <button className={cn(
+                <Link href="/who-we-help" onClick={close} className={cn(
                   "flex items-center gap-1 px-4 py-2.5 rounded-lg text-[15px] font-semibold transition-colors",
                   dropdown === "who"
                     ? "bg-blue-50 text-[#0A2463]"
@@ -129,7 +129,7 @@ export default function Header() {
                 )}>
                   Who We Help
                   <ChevronDown size={15} className={cn("transition-transform", dropdown === "who" && "rotate-180")} />
-                </button>
+                </Link>
                 {dropdown === "who" && (
                   <div className="absolute top-full left-0 w-64 pt-1 z-50">
                   <div className="bg-white border border-slate-200 rounded-xl shadow-xl p-2">
