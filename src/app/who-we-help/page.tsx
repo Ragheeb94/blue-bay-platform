@@ -37,7 +37,7 @@ export default function WhoWeHelpPage() {
               </h1>
               <p className="text-xl text-blue-200 leading-relaxed mb-8">
                 Whether you&apos;re the person who needs equipment, the family member supporting
-                them, or the clinician coordinating care — we have a clear path forward for you.
+                them, or the clinician coordinating care. We have a clear path forward for you.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#patients"   className="btn btn-outline-white">Patients & Users</a>
@@ -62,7 +62,7 @@ export default function WhoWeHelpPage() {
                 </h2>
                 <p className="text-xl text-slate-600 leading-relaxed mb-6">
                   Whether you&apos;re newly injured, your condition has changed, or you&apos;ve
-                  been using the wrong equipment for years — we start by understanding you. Not
+                  been using the wrong equipment for years. We start by understanding you, not
                   your diagnosis. You.
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">
@@ -84,11 +84,11 @@ export default function WhoWeHelpPage() {
                 {[
                   {
                     title: "We evaluate your real-world needs",
-                    body: "In-home or clinic evaluations that look at your environment, daily activities, and posture — not just a checklist.",
+                    body: "In-home or clinic evaluations that look at your environment, daily activities, and posture. Not just a checklist.",
                   },
                   {
                     title: "Equipment configured to your body",
-                    body: "Every wheelchair, seating system, and control interface is fit and programmed specifically for you — not a standard model.",
+                    body: "Every wheelchair, seating system, and control interface is fit and programmed specifically for you, not off a standard model.",
                   },
                   {
                     title: "We handle your insurance",
@@ -100,7 +100,7 @@ export default function WhoWeHelpPage() {
                   },
                   {
                     title: "Repairs & maintenance ongoing",
-                    body: "We service the equipment we provide. You have a direct contact — not a call centre.",
+                    body: "We service the equipment we provide. You have a direct line to your specialist, not a call centre.",
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4 p-5 rounded-2xl border border-slate-100 bg-slate-50">
@@ -133,7 +133,7 @@ export default function WhoWeHelpPage() {
                   },
                   {
                     title: "We keep you informed at every step",
-                    body: "You'll always know where the process stands — evaluation, insurance submission, approval, build, and delivery.",
+                    body: "You'll always know where the process stands: evaluation, insurance submission, approval, build, and delivery.",
                   },
                   {
                     title: "We help you ask the right questions",
@@ -164,7 +164,7 @@ export default function WhoWeHelpPage() {
                 </h2>
                 <p className="text-xl text-slate-600 leading-relaxed mb-6">
                   Navigating insurance, clinical terminology, and equipment options is
-                  overwhelming — especially when you&apos;re also managing everything else.
+                  overwhelming, especially when you&apos;re also managing everything else.
                   We walk alongside you, in plain language, from your first question through delivery.
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">
@@ -200,7 +200,7 @@ export default function WhoWeHelpPage() {
                 <p className="text-xl text-slate-600 leading-relaxed mb-6">
                   We collaborate directly with occupational therapists, physical therapists,
                   physicians, and rehab centres. Referrals are streamlined, documentation is handled
-                  by our team, and your patients receive outcomes-focused equipment — not whatever
+                  by our team, and your patients receive outcomes-focused equipment, not whatever
                   has the best margin.
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">

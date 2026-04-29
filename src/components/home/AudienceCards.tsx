@@ -7,7 +7,7 @@ const audiences = [
     label: "Patients & Users",
     headline: "Find equipment built for your life",
     description:
-      "Whether you're newly injured or your needs have changed, we guide you through every option and make sure your equipment is perfectly configured for your body.",
+      "Whether your needs are new or changing, we walk through every option with you and make sure your equipment is built around your body.",
     cta: "Start my search",
     href: "/products",
     iconBg: "#DBEAFE",
@@ -19,7 +19,7 @@ const audiences = [
     label: "Caregivers & Families",
     headline: "Support your loved one with confidence",
     description:
-      "Navigating insurance, clinical jargon, and product options is overwhelming. We walk alongside you — in plain language — from evaluation to delivery.",
+      "Insurance, clinical jargon, and product options can all be overwhelming. We guide you through it in plain language, from the first call to delivery.",
     cta: "Get guidance",
     href: "/consultation",
     iconBg: "#E0F2FE",
@@ -50,7 +50,7 @@ export default function AudienceCards() {
             Built for everyone in the journey
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Whether you&apos;re the patient, a caregiver, or a referring clinician — we have a
+            Whether you&apos;re the patient, a caregiver, or a referring clinician, we have a
             clear path forward for you.
           </p>
         </div>

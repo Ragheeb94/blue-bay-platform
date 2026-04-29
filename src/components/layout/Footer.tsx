@@ -47,7 +47,7 @@ export default function Footer() {
             </div>
             <p className="text-blue-200 text-[15px] leading-relaxed mb-6 max-w-sm">
               Certified CRT provider with 22+ years of experience. We match you to the right
-              equipment, collaborate with your clinical team, and handle insurance — so you can
+              equipment, collaborate with your clinical team, and handle insurance so you can
               focus on living.
             </p>
             <div className="space-y-3">

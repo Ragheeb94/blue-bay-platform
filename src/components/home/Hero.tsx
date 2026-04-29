@@ -22,9 +22,9 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-slate-600 leading-relaxed mb-8 max-w-lg">
-              We don&apos;t just sell equipment. We evaluate your needs, collaborate with your
-              clinical team, and configure every product to your body and lifestyle — then
-              handle insurance so you can focus on living.
+              Getting the right equipment takes more than browsing a catalogue. We work
+              alongside your clinical team, configure everything around your body and lifestyle,
+              and take care of insurance from start to finish.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">

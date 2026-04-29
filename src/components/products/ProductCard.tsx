@@ -104,8 +104,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold rounded-lg border-2 transition-colors text-[#0A2463] hover:bg-blue-50"
               style={{ borderColor: "#0A2463" }}
             >
-              <ShoppingCart size={15} />
               Add to Cart
+              <ShoppingCart size={15} />
             </button>
           ) : (
             <Link
@@ -113,8 +113,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold rounded-lg border-2 transition-colors text-[#0A2463] hover:bg-blue-50"
               style={{ borderColor: "#0A2463" }}
             >
-              <MessageSquare size={15} />
               Contact for Quote
+              <MessageSquare size={15} />
             </Link>
           )}
         </div>

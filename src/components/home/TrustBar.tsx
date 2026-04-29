@@ -15,7 +15,7 @@ const trustPoints = [
   },
   {
     title: "Full Insurance Support",
-    description: "Medicare, Medicaid, and private insurance documentation is handled by our team — you don't need to navigate it alone.",
+    description: "Medicare, Medicaid, and private insurance documentation is handled by our team. You will never need to navigate it alone.",
   },
   {
     title: "Nationwide Service",
@@ -63,8 +63,8 @@ export default function TrustBar() {
               Professional standards you can rely on
             </h2>
             <p className="text-xl text-slate-600 leading-relaxed mb-6">
-              We approach every case with the same clinical rigor we bring to complex rehab —
-              because we believe everyone deserves equipment that genuinely improves their life.
+              We approach every case with the same clinical rigor we bring to complex rehab,
+              because everyone deserves equipment that genuinely improves their life.
             </p>
             <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5">
               <div className="text-sm font-bold text-[#0A2463] mb-1">CRT Certified Provider</div>

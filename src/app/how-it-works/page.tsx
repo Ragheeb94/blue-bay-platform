@@ -44,7 +44,7 @@ const steps = [
     title: "Talk to your specialist",
     duration: "Within 1 business day",
     description:
-      "A certified ATP (Assistive Technology Professional) reviews your submission and contacts you. This isn't a sales call — it's a clinical conversation about your real situation, goals, and environment.",
+      "A certified ATP (Assistive Technology Professional) reviews your submission and contacts you. This isn't a sales call. It's a clinical conversation about your real situation, goals, and environment.",
     details: [
       "ATP credentialed and manufacturer-certified",
       "Discusses your goals and daily environment",
@@ -60,7 +60,7 @@ const steps = [
     title: "Clinical evaluation",
     duration: "1–2 hours",
     description:
-      "For Complex Rehab Technology, a certified evaluation is required — and it's the most important step. We collaborate with your OT, PT, or physician to assess your complete clinical picture: seating, positioning, transfers, environment, and functional goals.",
+      "For Complex Rehab Technology, a certified evaluation is required, and it's the most important step. We collaborate with your OT, PT, or physician to assess your complete clinical picture: seating, positioning, transfers, environment, and functional goals.",
     details: [
       "In-home or clinic evaluation available",
       "Collaboration with your existing therapy team",
@@ -76,7 +76,7 @@ const steps = [
     title: "Insurance verification & approval",
     duration: "2–6 weeks (varies by insurer)",
     description:
-      "We handle all insurance documentation — no forms for you to chase. We submit the Letter of Medical Necessity, clinical evaluation, and product justification directly to your insurer. We follow up and communicate every update.",
+      "We handle all insurance documentation so you never need to chase forms. We submit the Letter of Medical Necessity, clinical evaluation, and product justification directly to your insurer. We follow up and communicate every update.",
     details: [
       "Medicare, Medicaid, and private insurance",
       "We manage prior authorization requests",
@@ -160,7 +160,7 @@ export default function HowItWorksPage() {
                 The Process
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                How it works — every step explained
+                How it works, every step explained
               </h1>
               <p className="text-2xl text-[#93c5fd] leading-relaxed mb-8">
                 Complex rehab equipment is not a simple purchase. It&apos;s a clinical process —
@@ -259,9 +259,9 @@ export default function HowItWorksPage() {
                 </p>
                 <div className="space-y-3">
                   {[
-                    "Medicare Part B — most CRT equipment is covered",
-                    "Medicaid — varies by state, we verify upfront",
-                    "Private insurance — we contact your plan directly",
+                    "Medicare Part B (most CRT equipment is covered)",
+                    "Medicaid (we verify your state coverage upfront)",
+                    "Private insurance (we contact your plan directly)",
                     "Appeals supported if a claim is initially denied",
                     "Out-of-pocket estimates provided before any commitment",
                   ].map((item) => (

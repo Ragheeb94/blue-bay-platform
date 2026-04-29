@@ -20,7 +20,7 @@ const timeline = [
 ];
 
 const competencies = [
-  { title: "Clinician Collaboration", body: "We work directly with your OT, PT, or physician — not around them. Every evaluation is coordinated with your existing therapy team." },
+  { title: "Clinician Collaboration", body: "We work directly with your OT, PT, or physician, not around them. Every evaluation is coordinated with your existing therapy team." },
   { title: "Seating & Positioning", body: "Deep expertise in pressure management, posture support, and long-term positioning outcomes for complex rehab clients." },
   { title: "Power Mobility Setup", body: "Drive control programming, seating function configuration, and alternative access setup handled by manufacturer-certified specialists." },
   { title: "Insurance Navigation", body: "Medicare, Medicaid, and private insurance documentation prepared, submitted, and followed up by our team. No paperwork for you to chase." },
@@ -62,7 +62,7 @@ export default function AboutPage() {
                   We don&apos;t sell equipment. We solve mobility problems.
                 </h2>
                 <p className="text-xl text-slate-600 leading-relaxed mb-6">
-                  Complex rehab technology is not a product category — it&apos;s a clinical
+                  Complex rehab technology is not a product category. It&apos;s a clinical
                   process. Every case starts with understanding the person: their body, their
                   environment, their goals, and their care team. Equipment comes after.
                 </p>
@@ -75,7 +75,7 @@ export default function AboutPage() {
                   <div className="font-bold text-[#0A2463] text-lg mb-2">Part of the Medics Mobility Family</div>
                   <p className="text-slate-600 text-[15px] leading-relaxed">
                     Blue Bay Mobility Inc. operates under the same clinical standards and
-                    workflows as Medics Mobility Inc. (Ontario, Canada) — a provider with over
+                    workflows as Medics Mobility Inc. (Ontario, Canada), a provider with over
                     two decades of complex rehab experience and thousands of clients served.
                   </p>
                 </div>
@@ -190,7 +190,7 @@ export default function AboutPage() {
               <div>
                 <p className="section-label mb-3">Find Us</p>
                 <h2 className="text-4xl font-bold text-slate-900 mb-6">
-                  Based in Tustin, CA — serving the nation
+                  Based in Tustin, CA, serving the nation
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">
                   Our team is based in Orange County, California. We conduct in-home evaluations

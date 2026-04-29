@@ -42,7 +42,7 @@ export default function Header() {
       <div className="bg-[#071A4A] text-white py-2 hidden md:block">
         <div className="container flex items-center justify-between">
           <p className="text-sm text-blue-200">
-            Certified Complex Rehab Technology (CRT) Provider — Serving the U.S.
+            Certified Complex Rehab Technology (CRT) Provider &middot; Serving the U.S.
           </p>
           <a href="tel:+18889990072" className="flex items-center gap-1.5 text-sm font-semibold text-blue-100 hover:text-white transition-colors">
             <Phone size={13} />
