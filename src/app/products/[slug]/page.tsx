@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check, X, Phone, Calendar, AlertTriangle, Info } from "lucide-react";
+import { ArrowLeft, Check, X, Phone, Info, Shield } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ProductActions from "@/components/products/ProductActions";
+import ProductCard from "@/components/products/ProductCard";
 import { products } from "@/lib/data";
 
 interface ProductDetailPageProps {
@@ -19,8 +22,8 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
   return {
-    title: product.name,
-    description: product.description,
+    title: `${product.name} | Blue Bay Mobility`,
+    description: product.tagline,
   };
 }
 
@@ -29,33 +32,26 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const product = products.find((p) => p.slug === slug);
   if (!product) notFound();
 
+  const canAddToCart = !product.requiresConsultation && !!product.price;
+
   const related = products
     .filter((p) => p.category === product.category && p.slug !== product.slug)
     .slice(0, 3);
-
-  const emoji =
-    product.category === "power-wheelchairs" ? "⚡" :
-    product.category === "manual-wheelchairs" ? "🦽" :
-    product.category === "seating-positioning" ? "🪑" :
-    product.category === "power-scooters" ? "🛵" :
-    product.category === "walkers-rollators" ? "🚶" : "📦";
 
   return (
     <>
       <Header />
       <main id="main-content" className="flex-1 bg-[#f8faff]">
+
         {/* Breadcrumb */}
         <div className="bg-white border-b border-[#e2e8f0]">
           <div className="container py-4">
             <nav className="flex items-center gap-2 text-sm text-[#475569]">
-              <Link href="/products" className="flex items-center gap-1 hover:text-[#0b2d6b] transition-colors">
+              <Link href="/products" className="flex items-center gap-1 hover:text-[#0A2463] transition-colors">
                 <ArrowLeft size={16} /> Products
               </Link>
               <span>/</span>
-              <Link
-                href={`/products?category=${product.category}`}
-                className="hover:text-[#0b2d6b] transition-colors"
-              >
+              <Link href={`/products?category=${product.category}`} className="hover:text-[#0A2463] transition-colors">
                 {product.categoryLabel}
               </Link>
               <span>/</span>
@@ -66,25 +62,35 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
         <div className="container py-10">
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Main content */}
+
+            {/* ── Main content ────────────────────────────────── */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Product hero */}
+
+              {/* Product hero card */}
               <div className="card p-8">
                 <div className="grid md:grid-cols-2 gap-8 items-start">
-                  {/* Image */}
-                  <div className="h-64 bg-gradient-to-br from-[#eef4ff] to-[#dbeafe] rounded-xl flex items-center justify-center">
-                    <span className="text-8xl">{emoji}</span>
+
+                  {/* Product image */}
+                  <div className="relative h-72 rounded-xl overflow-hidden bg-slate-100">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      className="object-cover"
+                      priority
+                    />
                   </div>
 
-                  {/* Basic info */}
+                  {/* Info + options + CTAs */}
                   <div>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-3">
                       {product.badges.map((badge) => (
                         <span
                           key={badge}
                           className={`text-xs font-semibold px-3 py-1 rounded-full ${
                             badge === "CRT Required"
-                              ? "bg-[#0b2d6b] text-white"
+                              ? "bg-[#0A2463] text-white"
                               : badge === "Insurance Eligible"
                               ? "bg-[#d1fae5] text-[#065f46]"
                               : badge === "Ready to Ship"
@@ -100,35 +106,19 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                     <div className="text-sm font-semibold text-[#0ea5e9] mb-1">
                       {product.brand} · {product.categoryLabel}
                     </div>
-                    <h1 className="text-3xl font-bold text-[#0f172a] mb-3">{product.name}</h1>
-                    <p className="text-[#475569] text-lg leading-relaxed mb-5">{product.tagline}</p>
+                    <h1 className="text-2xl font-bold text-[#0f172a] mb-2">{product.name}</h1>
+                    <p className="text-[#475569] leading-relaxed mb-4">{product.tagline}</p>
 
-                    <div className="text-2xl font-bold text-[#0f172a] mb-5">
-                      {product.priceRange}
-                    </div>
-
-                    <div className="space-y-3">
-                      <Link
-                        href={`/consultation?product=${product.slug}`}
-                        className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0b2d6b] text-white font-semibold rounded-xl hover:bg-[#0e3a87] transition-colors text-lg"
-                      >
-                        <Calendar size={20} /> Request a Quote
-                      </Link>
-                      <a
-                        href="tel:+18889990072"
-                        className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-[#0b2d6b] text-[#0b2d6b] font-semibold rounded-xl hover:bg-[#eef4ff] transition-colors text-lg"
-                      >
-                        <Phone size={20} /> Call a Specialist
-                      </a>
-                    </div>
+                    {/* Options, price, CTAs — client component */}
+                    <ProductActions product={product} />
                   </div>
                 </div>
               </div>
 
               {/* About */}
               <div className="card p-7">
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-4">About this product</h2>
-                <p className="text-[#475569] text-lg leading-relaxed">{product.description}</p>
+                <h2 className="text-xl font-bold text-[#0f172a] mb-3">About this product</h2>
+                <p className="text-[#475569] text-base leading-relaxed">{product.description}</p>
               </div>
 
               {/* Good for / Not ideal */}
@@ -136,84 +126,69 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="card p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-8 h-8 rounded-lg bg-[#d1fae5] flex items-center justify-center">
-                      <Check size={18} className="text-[#10b981]" />
+                      <Check size={16} className="text-[#10b981]" />
                     </div>
-                    <h3 className="font-bold text-[#0f172a] text-lg">Good for you if…</h3>
+                    <h3 className="font-bold text-[#0f172a]">Good for you if…</h3>
                   </div>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {product.goodFor.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
-                        <Check size={17} className="text-[#10b981] flex-shrink-0 mt-0.5" />
-                        <span className="text-[#475569] text-base">{item}</span>
+                        <Check size={15} className="text-[#10b981] shrink-0 mt-0.5" />
+                        <span className="text-[#475569] text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
                 <div className="card p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-8 h-8 rounded-lg bg-[#fee2e2] flex items-center justify-center">
-                      <X size={18} className="text-[#ef4444]" />
+                      <X size={16} className="text-[#ef4444]" />
                     </div>
-                    <h3 className="font-bold text-[#0f172a] text-lg">May not be ideal if…</h3>
+                    <h3 className="font-bold text-[#0f172a]">May not be ideal if…</h3>
                   </div>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {product.notIdealFor.map((item) => (
                       <li key={item} className="flex items-start gap-2.5">
-                        <X size={17} className="text-[#ef4444] flex-shrink-0 mt-0.5" />
-                        <span className="text-[#475569] text-base">{item}</span>
+                        <X size={15} className="text-[#ef4444] shrink-0 mt-0.5" />
+                        <span className="text-[#475569] text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              {/* Specs table */}
+              {/* Specs */}
               <div className="card p-7">
-                <h2 className="text-2xl font-bold text-[#0f172a] mb-5">Specifications</h2>
+                <h2 className="text-xl font-bold text-[#0f172a] mb-5">Specifications</h2>
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <tbody>
                       {product.specs.map((spec, i) => (
-                        <tr
-                          key={spec.label}
-                          className={i % 2 === 0 ? "bg-[#f8faff]" : "bg-white"}
-                        >
-                          <td className="py-3.5 px-4 font-semibold text-[#0f172a] text-base w-44 rounded-l-lg">
-                            {spec.label}
-                          </td>
-                          <td className="py-3.5 px-4 text-[#475569] text-base rounded-r-lg">
-                            {spec.value}
-                          </td>
+                        <tr key={spec.label} className={i % 2 === 0 ? "bg-[#f8faff]" : "bg-white"}>
+                          <td className="py-3 px-4 font-semibold text-[#0f172a] text-sm w-44 rounded-l-lg">{spec.label}</td>
+                          <td className="py-3 px-4 text-[#475569] text-sm rounded-r-lg">{spec.value}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-
               </div>
 
               {/* CRT note */}
               {product.crtRequired && (
-                <div className="card p-7 border-[#0b2d6b] border-2">
+                <div className="card p-7 border-[#0A2463] border-2">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#eef4ff] rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Info size={22} className="text-[#0b2d6b]" />
+                    <div className="w-10 h-10 bg-[#eef4ff] rounded-lg flex items-center justify-center shrink-0">
+                      <Info size={20} className="text-[#0A2463]" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-[#0b2d6b] text-lg mb-2">
+                      <h3 className="font-bold text-[#0A2463] text-base mb-2">
                         This product requires a clinical evaluation
                       </h3>
-                      <p className="text-[#475569] text-base leading-relaxed mb-4">
-                        Complex Rehab Technology (CRT) equipment like this must be evaluated and
-                        prescribed by a certified ATP in collaboration with your physician or
-                        therapist. This isn&apos;t a hurdle — it&apos;s what ensures the equipment
-                        is safe, properly configured, and covered by insurance.
+                      <p className="text-[#475569] text-sm leading-relaxed mb-3">
+                        Complex Rehab Technology equipment must be evaluated and prescribed by a certified ATP in collaboration with your physician or therapist. This ensures the equipment is safe, properly configured, and covered by insurance.
                       </p>
-                      <Link
-                        href="/how-it-works"
-                        className="text-[#0b2d6b] font-semibold hover:underline"
-                      >
+                      <Link href="/how-it-works" className="text-[#0A2463] font-semibold text-sm hover:underline">
                         Learn about the evaluation process →
                       </Link>
                     </div>
@@ -222,63 +197,75 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               )}
             </div>
 
-            {/* Sticky sidebar */}
+            {/* ── Sidebar ──────────────────────────────────────── */}
             <div className="space-y-5">
-              {/* Quick quote CTA */}
+
+              {/* Trust signals — always shown */}
               <div className="card p-6 sticky top-24">
-                <h3 className="font-bold text-[#0f172a] text-xl mb-2">
-                  Interested in the {product.name}?
-                </h3>
-                <p className="text-[#475569] text-base mb-5">
-                  {product.requiresConsultation
-                    ? "This product requires a clinical evaluation. Our certified ATP will guide you through the process."
-                    : "Get a personalized quote or speak with a specialist to confirm this is right for you."}
-                </p>
-
-                <div className="space-y-3 mb-5">
-                  <Link
-                    href={`/consultation?product=${product.slug}`}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0b2d6b] text-white font-semibold rounded-xl hover:bg-[#0e3a87] transition-colors"
-                  >
-                    <Calendar size={18} /> Request Quote / Evaluation
-                  </Link>
-                  <a
-                    href="tel:+18889990072"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-[#0b2d6b] text-[#0b2d6b] font-semibold rounded-xl hover:bg-[#eef4ff] transition-colors"
-                  >
-                    <Phone size={18} /> 1-888-999-0072
-                  </a>
+                <h3 className="font-bold text-[#0f172a] text-base mb-4">Why buy from Blue Bay?</h3>
+                <div className="space-y-3">
+                  {[
+                    "We handle all insurance documentation",
+                    "48hr quote turnaround, no obligation",
+                    "Certified ATPs on every order",
+                    "In-home delivery and fitting included",
+                    "Ongoing repairs and maintenance support",
+                  ].map((point) => (
+                    <div key={point} className="flex items-start gap-2.5">
+                      <Check size={15} className="text-[#10b981] shrink-0 mt-0.5" />
+                      <span className="text-[#475569] text-sm">{point}</span>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="flex items-center gap-2 text-sm text-[#475569]">
-                  <Check size={16} className="text-[#10b981]" />
-                  <span>We handle insurance paperwork</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-[#475569] mt-2">
-                  <Check size={16} className="text-[#10b981]" />
-                  <span>48hr quote turnaround</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-[#475569] mt-2">
-                  <Check size={16} className="text-[#10b981]" />
-                  <span>No obligation</span>
-                </div>
+                {/* Consultation CTA only for products that can't be added to cart */}
+                {!canAddToCart && (
+                  <div className="mt-5 pt-5 border-t border-slate-100">
+                    <p className="text-sm text-[#475569] mb-3">
+                      {product.requiresConsultation
+                        ? "This product requires a clinical evaluation. Our ATP will guide you through every step."
+                        : "Contact us for pricing on this product."}
+                    </p>
+                    <Link
+                      href={`/consultation?product=${product.slug}`}
+                      className="w-full flex items-center justify-center gap-2 py-3 bg-[#0A2463] text-white font-bold rounded-xl hover:bg-[#1E3A8A] transition-colors text-sm"
+                    >
+                      Book Consultation
+                    </Link>
+                    <a
+                      href="tel:+18889990072"
+                      className="w-full flex items-center justify-center gap-2 py-3 mt-2 border border-slate-300 text-slate-700 font-semibold rounded-xl hover:bg-slate-50 transition-colors text-sm"
+                    >
+                      <Phone size={15} /> 1-888-999-0072
+                    </a>
+                  </div>
+                )}
+
+                {/* For cart products, just show the phone number */}
+                {canAddToCart && (
+                  <div className="mt-5 pt-5 border-t border-slate-100">
+                    <p className="text-xs text-slate-400 mb-2">Questions before you buy?</p>
+                    <a
+                      href="tel:+18889990072"
+                      className="flex items-center gap-2 text-[#0A2463] font-semibold text-sm hover:underline"
+                    >
+                      <Phone size={14} /> 1-888-999-0072
+                    </a>
+                  </div>
+                )}
               </div>
 
-              {/* Insurance coverage */}
+              {/* Insurance banner */}
               {product.badges.includes("Insurance Eligible") && (
                 <div className="card p-5">
-                  <div className="text-sm font-bold text-[#10b981] mb-2">
-                    Insurance Coverage
+                  <div className="flex items-center gap-2 mb-2">
+                    <Shield size={16} className="text-[#10b981]" />
+                    <span className="text-sm font-bold text-[#10b981]">Insurance Eligible</span>
                   </div>
                   <p className="text-[#475569] text-sm leading-relaxed">
-                    This product may be covered by Medicare, Medicaid, or private insurance with
-                    appropriate clinical documentation. We verify your coverage as part of the
-                    evaluation process — at no cost to you.
+                    This product may be covered by Medicare, Medicaid, or private insurance with appropriate clinical documentation. We verify your coverage at no cost to you.
                   </p>
-                  <Link
-                    href="/how-it-works#insurance"
-                    className="text-[#0b2d6b] text-sm font-semibold mt-3 block hover:underline"
-                  >
+                  <Link href="/how-it-works#insurance" className="text-[#0A2463] text-sm font-semibold mt-2 block hover:underline">
                     How insurance works →
                   </Link>
                 </div>
@@ -289,24 +276,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           {/* Related products */}
           {related.length > 0 && (
             <div className="mt-14">
-              <h2 className="text-2xl font-bold text-[#0f172a] mb-6">
-                Also in {product.categoryLabel}
-              </h2>
+              <h2 className="text-xl font-bold text-[#0f172a] mb-6">Also in {product.categoryLabel}</h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {related.map((rp) => (
-                  <Link
-                    key={rp.slug}
-                    href={`/products/${rp.slug}`}
-                    className="card p-5 flex items-start gap-4 hover:shadow-md transition-all hover:-translate-y-0.5"
-                  >
-                    <div className="w-12 h-12 bg-[#eef4ff] rounded-lg flex items-center justify-center flex-shrink-0 text-2xl">
-                      {emoji}
-                    </div>
-                    <div>
-                      <div className="font-bold text-[#0f172a] text-base">{rp.name}</div>
-                      <div className="text-sm text-[#475569]">{rp.tagline}</div>
-                    </div>
-                  </Link>
+                  <ProductCard key={rp.slug} product={rp} />
                 ))}
               </div>
             </div>

@@ -7,6 +7,15 @@ export type ProductCategory =
   | "transfer-aids"
   | "accessories";
 
+export interface ProductOption {
+  id: string;
+  label: string;
+  required?: boolean;
+  type: "select" | "checkbox";
+  choices?: { value: string; label: string; priceAdd?: number }[];
+  priceAdd?: number; // for checkbox type
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -25,6 +34,7 @@ export interface Product {
   specs: { label: string; value: string }[];
   description: string;
   crtRequired: boolean;
+  options?: ProductOption[];
 }
 
 export const products: Product[] = [
@@ -192,6 +202,30 @@ export const products: Product[] = [
     description:
       "The Go-Go Elite Traveller is one of the most popular travel scooters for good reason — it disassembles quickly into airline-friendly pieces without tools. Best for supplemental, not primary, mobility.",
     crtRequired: false,
+    options: [
+      {
+        id: "color",
+        label: "Color",
+        type: "select",
+        choices: [
+          { value: "red", label: "Red" },
+          { value: "blue", label: "Blue" },
+          { value: "silver", label: "Silver" },
+        ],
+      },
+      {
+        id: "basket",
+        label: "Front Basket",
+        type: "checkbox",
+        priceAdd: 25,
+      },
+      {
+        id: "cupholder",
+        label: "Cup Holder",
+        type: "checkbox",
+        priceAdd: 15,
+      },
+    ],
   },
   {
     slug: "drive-nitro-rollator",
@@ -221,6 +255,31 @@ export const products: Product[] = [
     description:
       "The Nitro's lightweight frame and loop-lock brakes make it one of the most intuitive rollators for everyday use. Available in multiple colors.",
     crtRequired: false,
+    options: [
+      {
+        id: "color",
+        label: "Color",
+        type: "select",
+        choices: [
+          { value: "blue", label: "Blue" },
+          { value: "red", label: "Red" },
+          { value: "black", label: "Black" },
+          { value: "silver", label: "Silver" },
+        ],
+      },
+      {
+        id: "seat-cushion",
+        label: "Seat Cushion Pad",
+        type: "checkbox",
+        priceAdd: 18,
+      },
+      {
+        id: "tote-bag",
+        label: "Underseat Tote Bag",
+        type: "checkbox",
+        priceAdd: 15,
+      },
+    ],
   },
 
   // ─── Direct-purchase power wheelchairs ──────────────────────────────────
@@ -257,6 +316,40 @@ export const products: Product[] = [
     description:
       "The Pride Jazzy Ultra Light is a premium folding power wheelchair with a carbon fiber frame that folds in seconds. Airline-approved lithium battery and a total weight under 35 lbs make it the go-to travel chair.",
     crtRequired: false,
+    options: [
+      {
+        id: "color",
+        label: "Frame Color",
+        type: "select",
+        choices: [
+          { value: "black", label: "Midnight Black" },
+          { value: "blue", label: "Midnight Blue" },
+          { value: "red", label: "Candy Red" },
+        ],
+      },
+      {
+        id: "joystick",
+        label: "Joystick Side",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "right", label: "Right" },
+          { value: "left", label: "Left" },
+        ],
+      },
+      {
+        id: "cupholder",
+        label: "Cup Holder",
+        type: "checkbox",
+        priceAdd: 15,
+      },
+      {
+        id: "phone-mount",
+        label: "Phone Mount",
+        type: "checkbox",
+        priceAdd: 20,
+      },
+    ],
   },
   {
     slug: "golden-ally-gp303",
@@ -291,6 +384,42 @@ export const products: Product[] = [
     description:
       "The Golden Ally combines a foldable, portable design with the durability of pneumatic rear tires for outdoor performance. USB charging ports, LED lighting, and Smart App control set it apart as a tech-forward daily driver.",
     crtRequired: false,
+    options: [
+      {
+        id: "color",
+        label: "Frame Color",
+        type: "select",
+        choices: [
+          { value: "black", label: "Matte Black" },
+          { value: "silver", label: "Silver" },
+        ],
+      },
+      {
+        id: "joystick",
+        label: "Joystick Side",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "right", label: "Right" },
+          { value: "left", label: "Left" },
+        ],
+      },
+      {
+        id: "headrest",
+        label: "Headrest",
+        type: "select",
+        choices: [
+          { value: "standard", label: "Standard (included)" },
+          { value: "elevated", label: "Elevated Headrest", priceAdd: 45 },
+        ],
+      },
+      {
+        id: "cupholder",
+        label: "Cup Holder",
+        type: "checkbox",
+        priceAdd: 15,
+      },
+    ],
   },
 
   // ─── Direct-purchase scooters ────────────────────────────────────────────
@@ -326,6 +455,23 @@ export const products: Product[] = [
     description:
       "The Go-Go Carbon is Pride's flagship travel scooter — an ultra-light carbon fiber body that folds down without tools, weighing just 35 lbs without the battery. Perfect for air travel and active lifestyles.",
     crtRequired: false,
+    options: [
+      {
+        id: "color",
+        label: "Color",
+        type: "select",
+        choices: [
+          { value: "black", label: "Black" },
+          { value: "red", label: "Red" },
+        ],
+      },
+      {
+        id: "carry-bag",
+        label: "Travel Carry Bag",
+        type: "checkbox",
+        priceAdd: 35,
+      },
+    ],
   },
   {
     slug: "amylior-gs100-scooter",
@@ -359,6 +505,24 @@ export const products: Product[] = [
     description:
       "The Amylior GS 100 is a well-rounded compact travel scooter with quick-release disassembly for easy loading. Its S-Drive controller and LED lighting make it a capable everyday companion for moderate mobility needs.",
     crtRequired: false,
+    options: [
+      {
+        id: "color",
+        label: "Color",
+        type: "select",
+        choices: [
+          { value: "red", label: "Red" },
+          { value: "black", label: "Black" },
+          { value: "blue", label: "Blue" },
+        ],
+      },
+      {
+        id: "cupholder",
+        label: "Cup Holder",
+        type: "checkbox",
+        priceAdd: 15,
+      },
+    ],
   },
 
   // ─── Direct-purchase manual wheelchairs ──────────────────────────────────
@@ -393,6 +557,28 @@ export const products: Product[] = [
     description:
       "The Drive Blue Streak is a reliable everyday manual wheelchair at an accessible price. Flip-back desk-length armrests, push-to-lock wheel locks, and solid rubber tires make it a practical choice for daily home use.",
     crtRequired: false,
+    options: [
+      {
+        id: "seat-width",
+        label: "Seat Width",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "16", label: "16 inch" },
+          { value: "18", label: "18 inch" },
+          { value: "20", label: "20 inch" },
+        ],
+      },
+      {
+        id: "color",
+        label: "Frame Color",
+        type: "select",
+        choices: [
+          { value: "black", label: "Black" },
+          { value: "silver", label: "Silver" },
+        ],
+      },
+    ],
   },
 
   // ─── Direct-purchase rollators / walkers ─────────────────────────────────
@@ -427,6 +613,35 @@ export const products: Product[] = [
     description:
       "The HumanCare neXus 3 stands out with its cable-free push-to-lock brake system — fewer parts to break, easier to use. Cross-folds flat for transport and storage. Available in Super Low, Low, and Standard seat heights.",
     crtRequired: false,
+    options: [
+      {
+        id: "height",
+        label: "Seat Height",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "super-low", label: "Super Low (15\"–17\")" },
+          { value: "low", label: "Low (16\"–18\")" },
+          { value: "standard", label: "Standard (18\"–21\")" },
+        ],
+      },
+      {
+        id: "color",
+        label: "Color",
+        type: "select",
+        choices: [
+          { value: "black", label: "Black" },
+          { value: "red", label: "Red" },
+          { value: "blue", label: "Blue" },
+        ],
+      },
+      {
+        id: "tote-bag",
+        label: "Tote Bag",
+        type: "checkbox",
+        priceAdd: 22,
+      },
+    ],
   },
   {
     slug: "bios-deluxe-walker",
@@ -457,6 +672,18 @@ export const products: Product[] = [
     description:
       "The BIOS Deluxe Folding Walker is a simple, reliable walking aid with two front wheels for smooth gliding. Folds flat for easy storage. Ideal as a post-surgical recovery aid or light daily support.",
     crtRequired: false,
+    options: [
+      {
+        id: "color",
+        label: "Color",
+        type: "select",
+        choices: [
+          { value: "blue", label: "Blue" },
+          { value: "red", label: "Red" },
+          { value: "black", label: "Black" },
+        ],
+      },
+    ],
   },
 
   // ─── Cushions & Seating ──────────────────────────────────────────────────
@@ -492,6 +719,29 @@ export const products: Product[] = [
     description:
       "The Drive Balanced Aire uses interconnected air cells to deeply immerse and offload pressure from bony prominences. Adjustable by hand pump, washable cover, and includes a repair kit. Meets flammability standard TB117.",
     crtRequired: false,
+    options: [
+      {
+        id: "size",
+        label: "Cushion Width",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "16", label: "16 inch" },
+          { value: "18", label: "18 inch" },
+          { value: "20", label: "20 inch" },
+        ],
+      },
+      {
+        id: "height",
+        label: "Cell Height",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "2in", label: "2 inch (standard)" },
+          { value: "4in", label: "4 inch (high profile)" },
+        ],
+      },
+    ],
   },
   {
     slug: "bios-coccyx-gel-cushion",
@@ -523,6 +773,18 @@ export const products: Product[] = [
     description:
       "The BIOS Coccyx Gel Cushion relieves tailbone and lower spine pressure with a targeted coccyx cut-out and gel insert. Machine-washable fleece cover included. A practical everyday comfort upgrade for any seat.",
     crtRequired: false,
+    options: [
+      {
+        id: "size",
+        label: "Size",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "standard", label: "Standard (16\"×18\")" },
+          { value: "wide", label: "Wide (18\"×18\")" },
+        ],
+      },
+    ],
   },
 
   // ─── Transfer Aids ───────────────────────────────────────────────────────
@@ -557,6 +819,18 @@ export const products: Product[] = [
     description:
       "The Drive Folding Sliding Transfer Bench lets users transfer into and out of the bathtub while remaining seated. Reversible backrest, locking slide mechanism, suction cups, safety belt, and removable soap dish included. Folds flat for storage.",
     crtRequired: false,
+    options: [
+      {
+        id: "direction",
+        label: "Transfer Direction",
+        required: true,
+        type: "select",
+        choices: [
+          { value: "left", label: "Left (transfer from left side of tub)" },
+          { value: "right", label: "Right (transfer from right side of tub)" },
+        ],
+      },
+    ],
   },
 ];
 
