@@ -50,32 +50,48 @@ export default function CartDrawer() {
           ) : (
             <div className="space-y-4">
               {items.map((item) => (
-                <div key={item.slug} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50">
+                <div key={item.cartKey} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50">
                   <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-white shrink-0">
                     <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-slate-900 text-sm leading-tight truncate">{item.name}</div>
-                    <div className="text-xs text-slate-500 mb-2">{item.brand} · {item.categoryLabel}</div>
+                    <div className="font-semibold text-slate-900 text-sm leading-tight">{item.name}</div>
+                    <div className="text-xs text-slate-500 mb-1">{item.brand} · {item.categoryLabel}</div>
+
+                    {/* Add-ons */}
+                    {item.addOns && item.addOns.length > 0 && (
+                      <div className="mb-1.5 space-y-0.5">
+                        {item.addOns.map((ao) => (
+                          <div key={ao.label} className="text-xs text-slate-400 flex items-center gap-1">
+                            <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0" />
+                            {ao.label}
+                            {ao.priceAdd > 0 && (
+                              <span className="text-slate-400">(+${ao.priceAdd})</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     <div className="font-bold text-[#0A2463] text-sm mb-3">{item.priceLabel}</div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <button
-                          onClick={() => updateQty(item.slug, item.quantity - 1)}
+                          onClick={() => updateQty(item.cartKey, item.quantity - 1)}
                           className="w-7 h-7 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-200 transition-colors"
                         >
                           <Minus size={12} />
                         </button>
                         <span className="text-sm font-semibold w-6 text-center">{item.quantity}</span>
                         <button
-                          onClick={() => updateQty(item.slug, item.quantity + 1)}
+                          onClick={() => updateQty(item.cartKey, item.quantity + 1)}
                           className="w-7 h-7 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-200 transition-colors"
                         >
                           <Plus size={12} />
                         </button>
                       </div>
                       <button
-                        onClick={() => removeItem(item.slug)}
+                        onClick={() => removeItem(item.cartKey)}
                         className="p-1.5 rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors"
                       >
                         <Trash2 size={15} />

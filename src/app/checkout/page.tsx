@@ -118,25 +118,36 @@ export default function CheckoutPage() {
                   ) : (
                     <div className="space-y-4">
                       {items.map(item => (
-                        <div key={item.slug} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-white">
+                        <div key={item.cartKey} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-white">
                           <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-slate-50 shrink-0">
                             <Image src={item.image} alt={item.name} fill className="object-cover" sizes="80px" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="font-semibold text-slate-900 text-sm leading-tight">{item.name}</div>
-                            <div className="text-xs text-slate-400 mb-2">{item.brand} · {item.categoryLabel}</div>
+                            <div className="text-xs text-slate-400 mb-1">{item.brand} · {item.categoryLabel}</div>
+                            {item.addOns && item.addOns.length > 0 && (
+                              <div className="mb-1.5 space-y-0.5">
+                                {item.addOns.map((ao) => (
+                                  <div key={ao.label} className="text-xs text-slate-400 flex items-center gap-1">
+                                    <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0" />
+                                    {ao.label}
+                                    {ao.priceAdd > 0 && <span>(+${ao.priceAdd})</span>}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
                             <div className="font-bold text-[#0A2463] text-sm">
                               ${(item.price * item.quantity).toLocaleString("en-US", { minimumFractionDigits: 2 })}
                             </div>
                           </div>
                           <div className="flex flex-col items-end gap-2 shrink-0">
-                            <button onClick={() => removeItem(item.slug)} className="p-1.5 rounded-lg hover:bg-red-50 text-slate-300 hover:text-red-400 transition-colors">
+                            <button onClick={() => removeItem(item.cartKey)} className="p-1.5 rounded-lg hover:bg-red-50 text-slate-300 hover:text-red-400 transition-colors">
                               <Trash2 size={14} />
                             </button>
                             <div className="flex items-center gap-2">
-                              <button onClick={() => updateQty(item.slug, item.quantity - 1)} className="w-6 h-6 rounded border border-slate-200 flex items-center justify-center text-xs hover:bg-slate-100 transition-colors font-bold">−</button>
+                              <button onClick={() => updateQty(item.cartKey, item.quantity - 1)} className="w-6 h-6 rounded border border-slate-200 flex items-center justify-center text-xs hover:bg-slate-100 transition-colors font-bold">−</button>
                               <span className="text-sm font-semibold w-5 text-center">{item.quantity}</span>
-                              <button onClick={() => updateQty(item.slug, item.quantity + 1)} className="w-6 h-6 rounded border border-slate-200 flex items-center justify-center text-xs hover:bg-slate-100 transition-colors font-bold">+</button>
+                              <button onClick={() => updateQty(item.cartKey, item.quantity + 1)} className="w-6 h-6 rounded border border-slate-200 flex items-center justify-center text-xs hover:bg-slate-100 transition-colors font-bold">+</button>
                             </div>
                           </div>
                         </div>
@@ -252,11 +263,26 @@ export default function CheckoutPage() {
                 <h2 className="font-bold text-slate-900 text-lg mb-5">Order Summary</h2>
                 <div className="space-y-3 mb-5">
                   {items.map(item => (
-                    <div key={item.slug} className="flex justify-between items-start gap-2 text-sm">
-                      <span className="text-slate-600 flex-1 leading-tight">{item.name} <span className="text-slate-400">×{item.quantity}</span></span>
-                      <span className="font-semibold text-slate-900 shrink-0">
-                        ${(item.price * item.quantity).toLocaleString("en-US", { minimumFractionDigits: 2 })}
-                      </span>
+                    <div key={item.cartKey} className="text-sm">
+                      <div className="flex justify-between items-start gap-2">
+                        <span className="text-slate-700 font-medium flex-1 leading-tight">
+                          {item.name} <span className="text-slate-400 font-normal">×{item.quantity}</span>
+                        </span>
+                        <span className="font-semibold text-slate-900 shrink-0">
+                          ${(item.price * item.quantity).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                        </span>
+                      </div>
+                      {item.addOns && item.addOns.length > 0 && (
+                        <div className="mt-1 space-y-0.5 pl-1">
+                          {item.addOns.map((ao) => (
+                            <div key={ao.label} className="flex items-center gap-1 text-xs text-slate-400">
+                              <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0" />
+                              {ao.label}
+                              {ao.priceAdd > 0 && <span>(+${ao.priceAdd})</span>}
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>

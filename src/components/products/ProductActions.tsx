@@ -31,8 +31,29 @@ export default function ProductActions({ product }: ProductActionsProps) {
 
   const totalPrice = (product.price ?? 0) + addOnTotal;
 
+  // Build a readable list of all selected options for cart display
+  function buildAddOns() {
+    const list: { label: string; priceAdd: number }[] = [];
+    for (const opt of product.options ?? []) {
+      if (opt.type === "select" && selections[opt.id]) {
+        const choice = opt.choices?.find((c) => c.value === selections[opt.id]);
+        if (choice) {
+          list.push({ label: `${opt.label}: ${choice.label}`, priceAdd: choice.priceAdd ?? 0 });
+        }
+      }
+      if (opt.type === "checkbox" && checked[opt.id]) {
+        list.push({ label: opt.label, priceAdd: opt.priceAdd ?? 0 });
+      }
+    }
+    return list;
+  }
+
+  // Unique key: same product with different options = separate cart entries
+  const cartKey = `${product.slug}__${Object.entries(selections).sort().map(([k, v]) => `${k}:${v}`).join(",")}__${Object.keys(checked).filter((k) => checked[k]).sort().join(",")}`;
+
   function handleAddToCart() {
     addItem({
+      cartKey,
       slug: product.slug,
       name: product.name,
       brand: product.brand,
@@ -40,6 +61,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
       priceLabel: `$${totalPrice.toLocaleString()}`,
       image: product.image,
       categoryLabel: product.categoryLabel,
+      addOns: buildAddOns(),
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
