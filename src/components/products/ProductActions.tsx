@@ -128,7 +128,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
         {canAddToCart ? (
           <button
             onClick={handleAddToCart}
-            className="w-full flex items-center justify-center gap-2 py-3.5 text-white font-bold rounded-xl transition-all text-[15px]"
+            className="w-full flex items-center justify-center gap-2 py-3.5 text-white font-bold rounded-xl transition-[background] duration-200 active:scale-[0.97] text-[15px]"
             style={{ background: added ? "#16a34a" : "#0A2463" }}
           >
             <ShoppingCart size={19} />
@@ -137,7 +137,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
         ) : (
           <Link
             href={`/consultation?product=${product.slug}`}
-            className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0A2463] text-white font-bold rounded-xl hover:bg-[#1E3A8A] transition-colors text-[15px]"
+            className="w-full flex items-center justify-center gap-2 py-3.5 bg-[#0A2463] text-white font-bold rounded-xl hover:bg-[#1E3A8A] transition-[background] duration-150 active:scale-[0.97] text-[15px]"
           >
             <MessageSquare size={19} />
             Book Consultation
@@ -146,7 +146,7 @@ export default function ProductActions({ product }: ProductActionsProps) {
 
         <Link
           href={`/consultation?product=${product.slug}`}
-          className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-[#0A2463] text-[#0A2463] font-bold rounded-xl hover:bg-blue-50 transition-colors text-[15px]"
+          className="w-full flex items-center justify-center gap-2 py-3.5 border-2 border-[#0A2463] text-[#0A2463] font-bold rounded-xl hover:bg-blue-50 transition-[background] duration-150 active:scale-[0.97] text-[15px]"
         >
           Request a Quote
         </Link>

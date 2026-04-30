@@ -41,7 +41,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const canAddToCart = !product.requiresConsultation && !!product.price;
 
   return (
-    <div className="card flex flex-col group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+    <div className="card flex flex-col group hover:shadow-lg hover:-translate-y-0.5 transition-[transform,box-shadow] duration-200 overflow-hidden" style={{ transitionTimingFunction: "cubic-bezier(0.23,1,0.32,1)" }}>
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
         <Image
@@ -49,7 +49,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           alt={product.name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          style={{ transitionTimingFunction: "cubic-bezier(0.23,1,0.32,1)" }}
         />
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
@@ -99,7 +100,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="flex flex-col gap-2">
           <Link
             href={`/products/${product.slug}`}
-            className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold text-white rounded-lg transition-colors"
+            className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold text-white rounded-lg transition-[background] duration-150 active:scale-[0.97]"
             style={{ background: "#0A2463" }}
             onMouseEnter={e => (e.currentTarget.style.background = "#1E3A8A")}
             onMouseLeave={e => (e.currentTarget.style.background = "#0A2463")}
@@ -110,7 +111,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {canAddToCart ? (
             <button
               onClick={handleAddToCart}
-              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold rounded-lg border-2 transition-colors text-[#0A2463] hover:bg-blue-50"
+              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold rounded-lg border-2 transition-[background] duration-150 active:scale-[0.97] text-[#0A2463] hover:bg-blue-50"
               style={{ borderColor: "#0A2463" }}
             >
               Add to Cart
@@ -119,7 +120,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           ) : (
             <Link
               href={`/consultation?product=${product.slug}`}
-              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold rounded-lg border-2 transition-colors text-[#0A2463] hover:bg-blue-50"
+              className="flex items-center justify-center gap-1.5 w-full py-2.5 text-sm font-bold rounded-lg border-2 transition-[background] duration-150 active:scale-[0.97] text-[#0A2463] hover:bg-blue-50"
               style={{ borderColor: "#0A2463" }}
             >
               Contact for Quote
